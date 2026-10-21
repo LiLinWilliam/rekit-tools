@@ -58,20 +58,20 @@ The command writes `entropy-demo.png` in the current directory. The renderer nor
 
 ## Tools at a glance
 
-| Tool | Purpose | Typical entry point |
-| --- | --- | --- |
-| `doctor` | Check native tools, Python environments, and key directories | `python tools/doctor/doctor.py --json --no-write` |
-| `environment-snapshot` | Record locked package versions and editable-source commits | `python tools/environment-snapshot/02-snapshot-environments.py` |
-| `launcher` | Build Windows native launchers and extract `.xz` archives | `python tools/launcher/extract_xz.py <dir>` |
-| `migrate-after-move` | Restore environments after moving rekit and run doctor | `pwsh -File tools/migrate-after-move/00-after-move.ps1 --check-only` |
-| `render-entropy` | Render JSON entropy blocks to PNG | `Get-Content entropy.json | python tools/render-entropy/render_entropy.py entropy.png` |
-| `restore` | Restore virtual environments from locked requirements | `python tools/restore/restore.py --venv render --check-only` |
-| `retry-watchdog` | Observe Codex SQLite state and queue controlled retries | `python tools/retry-watchdog/watchdog.py --thread <thread-uuid> --once --dry-run` |
-| `toolchain-installers` | Build or configure binwalk, jadx, rizin, and Frida | See the tool directory README |
-| `venv-install-all` | Restore all virtual environments through `repair.exe` | `pwsh -File tools/venv-install-all/12-venv-install-all.ps1 --check-only` |
-| `verify` | Exercise native boundaries, argument passing, and JSON/PNG acceptance | `python tools/verify/verify.py` |
-| `verify-portability` | Verify offline restoration and paths containing spaces | `python tools/verify-portability/verify-portability.py` |
-| `verify-review-fixes` | Regress renderer independence, native invocation, and Ghidra heap settings | `python tools/verify-review-fixes/verify-review-fixes.py` |
+| Tool | Purpose | Typical entry point | Docs |
+| --- | --- | --- | --- |
+| `doctor` | Check native tools, Python environments, and key directories | `python tools/doctor/doctor.py --json --no-write` | [Page](https://lilinwilliam.github.io/rekit-tools/tools/doctor.html) |
+| `environment-snapshot` | Record locked package versions and editable-source commits | `python tools/environment-snapshot/02-snapshot-environments.py` | [Page](https://lilinwilliam.github.io/rekit-tools/tools/environment-snapshot.html) |
+| `launcher` | Build Windows native launchers and extract `.xz` archives | `python tools/launcher/extract_xz.py <dir>` | [Page](https://lilinwilliam.github.io/rekit-tools/tools/launcher.html) |
+| `migrate-after-move` | Restore environments after moving rekit and run doctor | `pwsh -File tools/migrate-after-move/00-after-move.ps1 --check-only` | [Page](https://lilinwilliam.github.io/rekit-tools/tools/migrate-after-move.html) |
+| `render-entropy` | Render JSON entropy blocks to PNG | `Get-Content entropy.json | python tools/render-entropy/render_entropy.py entropy.png` | [Page](https://lilinwilliam.github.io/rekit-tools/tools/render-entropy.html) |
+| `restore` | Restore virtual environments from locked requirements | `python tools/restore/restore.py --venv render --check-only` | [Page](https://lilinwilliam.github.io/rekit-tools/tools/restore.html) |
+| `retry-watchdog` | Observe Codex SQLite state and queue controlled retries | `python tools/retry-watchdog/watchdog.py --thread <thread-uuid> --once --dry-run` | [Page](https://lilinwilliam.github.io/rekit-tools/tools/retry-watchdog.html) |
+| `toolchain-installers` | Build or configure binwalk, jadx, rizin, and Frida | See the tool directory README | [Page](https://lilinwilliam.github.io/rekit-tools/tools/toolchain-installers.html) |
+| `venv-install-all` | Restore all virtual environments through `repair.exe` | `pwsh -File tools/venv-install-all/12-venv-install-all.ps1 --check-only` | [Page](https://lilinwilliam.github.io/rekit-tools/tools/venv-install-all.html) |
+| `verify` | Exercise native boundaries, argument passing, and JSON/PNG acceptance | `python tools/verify/verify.py` | [Page](https://lilinwilliam.github.io/rekit-tools/tools/verify.html) |
+| `verify-portability` | Verify offline restoration and paths containing spaces | `python tools/verify-portability/verify-portability.py` | [Page](https://lilinwilliam.github.io/rekit-tools/tools/verify-portability.html) |
+| `verify-review-fixes` | Regress renderer independence, native invocation, and Ghidra heap settings | `python tools/verify-review-fixes/verify-review-fixes.py` | [Page](https://lilinwilliam.github.io/rekit-tools/tools/verify-review-fixes.html) |
 
 Each tool documents its parameters, inputs, outputs, exit codes, and side effects in its [`tools/`](tools/) README.
 
