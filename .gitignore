@@ -41,3 +41,5 @@ capa/rules/
 *.sqlite
 .DS_Store
 Thumbs.db
+
+*.egg-info/
