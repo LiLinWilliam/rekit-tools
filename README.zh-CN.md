@@ -144,8 +144,8 @@ examples/            不含真实凭据的最小命令示例
 
 ## 测试
 
-当前测试套件包含 42 项测试，使用 `pytest-cov` 测得 `tools/` 总语句覆盖率为 48.91%。CI 将实测的 47% 作为门槛；覆盖率变化时请同步更新徽章和门槛。
+当前测试套件包含 49 项测试，使用 `pytest-cov` 测得 `tools/` 总语句覆盖率为 49.35%。CI 将实测的 49% 作为门槛；覆盖率变化时请同步更新徽章和门槛。
 
 ```powershell
-python -m pytest -q tests --cov=tools --cov-report=term-missing --cov-fail-under=47
+python -m pytest -q tests --cov=tools --cov-report=term-missing --cov-fail-under=49
 ```

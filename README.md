@@ -150,10 +150,10 @@ Bug reports, documentation fixes, and narrowly scoped tools are welcome. Please 
 
 ## Testing
 
-The current test suite has 42 tests and reports 48.91% total statement coverage for `tools/` with `pytest-cov`. CI enforces a measured 47% floor; update the badge and floor together when coverage changes.
+The current test suite has 49 tests and reports 49.35% total statement coverage for `tools/` with `pytest-cov`. CI enforces a measured 49% floor; update the badge and floor together when coverage changes.
 
 ```powershell
-python -m pytest -q tests --cov=tools --cov-report=term-missing --cov-fail-under=47
+python -m pytest -q tests --cov=tools --cov-report=term-missing --cov-fail-under=49
 pwsh -NoProfile -ExecutionPolicy Bypass -File tests/powershell_smoke.ps1
 ```
 
