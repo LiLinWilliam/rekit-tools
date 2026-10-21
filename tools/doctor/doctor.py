@@ -8,12 +8,22 @@ import sys
 import time
 from pathlib import Path
 
+_VERSION_ROOT = Path(__file__).resolve().parents[1]
+if str(_VERSION_ROOT) not in sys.path:
+    sys.path.insert(0, str(_VERSION_ROOT))
+from _version import add_version, print_version, version_only  # noqa: E402
+
+if version_only():
+    print_version("doctor")
+    raise SystemExit(0)
+
 sys.path.insert(0, str(Path(__file__).resolve().parent.parent / "bin"))
-from _environment import ROOT, VENVS, create_directories, environment, python_runtime
+from _environment import ROOT, VENVS, create_directories, environment, python_runtime  # noqa: E402
 
 
 def main():
     parser = argparse.ArgumentParser(description=__doc__)
+    add_version(parser)
     parser.add_argument("--json", action="store_true")
     parser.add_argument("--no-write", action="store_true")
     args = parser.parse_args()

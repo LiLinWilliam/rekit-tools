@@ -10,6 +10,11 @@ import time
 import uuid
 from pathlib import Path
 
+_VERSION_ROOT = Path(__file__).resolve().parents[1]
+if str(_VERSION_ROOT) not in sys.path:
+    sys.path.insert(0, str(_VERSION_ROOT))
+from _version import print_version, version_only  # noqa: E402
+
 ROOT = Path(__file__).resolve().parent.parent
 
 
@@ -30,6 +35,9 @@ def fingerprint(path):
 
 
 def main():
+    if version_only():
+        print_version("verify")
+        return 0
     logs = ROOT / "logs"
     logs.mkdir(exist_ok=True)
     original_profile = Path(os.environ["USERPROFILE"])

@@ -2,7 +2,7 @@
 
 [English](README.md) | 中文
 
-[![CI](https://github.com/LiLinWilliam/rekit-tools/actions/workflows/ci.yml/badge.svg)](https://github.com/LiLinWilliam/rekit-tools/actions/workflows/ci.yml) [![Coverage](https://img.shields.io/badge/coverage-37%25-brightgreen)](#测试)
+[![CI](https://github.com/LiLinWilliam/rekit-tools/actions/workflows/ci.yml/badge.svg)](https://github.com/LiLinWilliam/rekit-tools/actions/workflows/ci.yml) [![Coverage](https://img.shields.io/badge/coverage-39%25-brightgreen)](#测试)
 
 `rekit-tools` 是一组面向 Windows 的可审计工具：它们围绕本地 rekit 运行时提供环境快照、恢复、健康检查、可迁移性验证、熵图渲染和 Codex 会话看护。工具保持独立目录，优先使用 rekit 内置的运行时与路径，不把依赖写入系统 Python 或全局 PATH。
 
@@ -68,8 +68,8 @@ examples/            不含真实凭据的最小命令索引
 
 ## 测试
 
-当前测试套件包含 20 个测试，使用 `pytest-cov` 测得 `tools/` 总语句覆盖率为 37%。CI 将 37% 作为真实门槛；覆盖率变化时请同步更新徽章和门槛。
+当前测试套件包含 33 个测试，使用 `pytest-cov` 测得 `tools/` 总语句覆盖率为 39%。CI 将 39% 作为真实门槛；覆盖率变化时请同步更新徽章和门槛。
 
 ```powershell
-python -m pytest -q tests --cov=tools --cov-report=term-missing --cov-fail-under=37
+python -m pytest -q tests --cov=tools --cov-report=term-missing --cov-fail-under=39
 ```

@@ -14,6 +14,11 @@ import time
 from datetime import datetime
 from pathlib import Path
 
+_VERSION_ROOT = Path(__file__).resolve().parents[1]
+if str(_VERSION_ROOT) not in sys.path:
+    sys.path.insert(0, str(_VERSION_ROOT))
+from _version import add_version  # noqa: E402
+
 CREATE_NO_WINDOW = 0x08000000
 
 def now():
@@ -118,6 +123,7 @@ def run_once(codex, thread, prompt, model, effort, tier, cwd, out_dir):
 
 def main(argv):
     ap = argparse.ArgumentParser()
+    add_version(ap)
     ap.add_argument("--thread", required=True)
     ap.add_argument("--model", default="gpt-6-astra")
     ap.add_argument("--effort", default="ultra")

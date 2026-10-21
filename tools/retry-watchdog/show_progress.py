@@ -13,6 +13,11 @@ import sqlite3
 import sys
 from pathlib import Path
 
+_VERSION_ROOT = Path(__file__).resolve().parents[1]
+if str(_VERSION_ROOT) not in sys.path:
+    sys.path.insert(0, str(_VERSION_ROOT))
+from _version import print_version, version_only  # noqa: E402
+
 HOME = Path(os.environ.get("CODEX_HOME") or (Path.home() / ".codex"))
 
 def conn(name):
@@ -74,6 +79,9 @@ def show(thread_id, n=20):
     return 0
 
 if __name__ == "__main__":
+    if version_only():
+        print_version("retry-watchdog/show_progress")
+        raise SystemExit(0)
     sys.stdout.reconfigure(encoding="utf-8", errors="replace")
     args = [a for a in sys.argv[1:]]
     n = 20

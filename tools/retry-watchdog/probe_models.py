@@ -9,6 +9,11 @@ from concurrent.futures import ThreadPoolExecutor
 from datetime import datetime
 from pathlib import Path
 
+_VERSION_ROOT = Path(__file__).resolve().parents[1]
+if str(_VERSION_ROOT) not in sys.path:
+    sys.path.insert(0, str(_VERSION_ROOT))
+from _version import print_version, version_only  # noqa: E402
+
 CREATE_NO_WINDOW = 0x08000000
 MODELS = [
     ("gpt-6-astra", "ultra"), ("gpt-6-astra", "xhigh"),
@@ -59,6 +64,9 @@ def test(codex, model, effort, timeout=100):
         return model, effort, False, timeout, "timeout"
 
 def main():
+    if version_only():
+        print_version("retry-watchdog/probe_models")
+        return 0
     for st in (sys.stdout, sys.stderr):
         try: st.reconfigure(encoding="utf-8", errors="replace")
         except Exception: pass

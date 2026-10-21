@@ -39,6 +39,11 @@ import time
 from datetime import datetime
 from pathlib import Path
 
+_VERSION_ROOT = Path(__file__).resolve().parents[1]
+if str(_VERSION_ROOT) not in sys.path:
+    sys.path.insert(0, str(_VERSION_ROOT))
+from _version import add_version  # noqa: E402
+
 # ---------------------------------------------------------------- 基础工具
 
 def now_ts() -> float:
@@ -441,6 +446,7 @@ def main(argv) -> int:
     setup_stdout()
     ap = argparse.ArgumentParser(
         description="Codex 会话自动重试守护：codex queue 交互桥 + 失败退避，直到 turn 完成")
+    add_version(ap)
     ap.add_argument("--thread", required=True, help="目标会话 UUID")
     ap.add_argument("--codex-home", default=None, help="CODEX_HOME，默认 ~/.codex")
     ap.add_argument("--codex-exe", default=None, help="codex.exe 路径，默认自动探测")
