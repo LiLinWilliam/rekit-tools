@@ -18,6 +18,8 @@ This index groups the repository's operator and contributor documentation. The t
 
 ## Tool reference
 
+- [Exit-code contract](exit-code-contract.md) — stable statuses for scripts and CI
+
 | Tool | Reference |
 | --- | --- |
 | doctor | [tools/doctor](../tools/doctor/README.md) |
