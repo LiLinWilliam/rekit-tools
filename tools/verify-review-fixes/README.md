@@ -20,3 +20,10 @@ $ python tools/verify-review-fixes/verify-review-fixes.py --version
 verify-review-fixes 1.0.2
 exit=0
 ```
+## Exit codes
+
+`0` means the review-fix regression checks passed; `1` means a check failed. `--version` returns `0`. See the [repository exit-code contract](../../docs/exit-code-contract.md) for the automation rules.
+
+## Security notes
+
+The checks invoke local tools and create temporary directories and logs. Use an authorized runtime, keep real samples and private paths out of output, and do not treat this as a device or session test. See [security boundaries](../../docs/security-boundaries.md) before running against a real runtime.

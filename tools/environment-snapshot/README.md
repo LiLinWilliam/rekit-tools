@@ -23,3 +23,10 @@ $ python tools/environment-snapshot/02-snapshot-environments.py --version
 environment-snapshot 1.0.2
 exit=0
 ```
+## Exit codes
+
+`0` means the snapshot was written. Freeze, Git, or file errors use the Python runtime's non-zero status; those values are not a stable interface. `--version` returns `0`. See the [repository exit-code contract](../../docs/exit-code-contract.md) for the automation rules.
+
+## Security notes
+
+Run only in an authorized rekit root. The manifest can contain local editable paths and commit IDs; review and redact it before sharing. See [security boundaries](../../docs/security-boundaries.md) before running against a real runtime.

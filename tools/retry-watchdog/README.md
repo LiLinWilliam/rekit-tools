@@ -33,3 +33,10 @@ $ python tools/retry-watchdog/watchdog.py --version
 watchdog.py 1.0.2
 exit=0
 ```
+## Exit codes
+
+`0` means a check or retry loop ended normally; `2` means `CODEX_HOME` is unavailable; `3` means another watchdog owns the lock; `130` means Ctrl+C. `--version` returns `0`. See the [repository exit-code contract](../../docs/exit-code-contract.md) for the automation rules.
+
+## Security notes
+
+Watch only an authorized Codex session. Begin with `--once --dry-run`; SQLite, rollout, UUID, and log data can be sensitive and must stay outside commits. See [security boundaries](../../docs/security-boundaries.md) before running against a real runtime.
