@@ -27,6 +27,19 @@ pre-commit run --all-files
 
 The hooks apply the repository Ruff configuration and basic YAML, whitespace, and merge-conflict checks. The CI matrix remains the final check for Windows-specific behavior.
 
+## Copy/paste local validation
+
+After installing the editable package and pre-commit once, this block is the shortest complete local check:
+
+```powershell
+python -m pytest -q tests --cov=tools --cov-report=term-missing --cov-fail-under=49
+pwsh -NoProfile -ExecutionPolicy Bypass -File tests/powershell_smoke.ps1
+pre-commit run --all-files
+git diff --check
+```
+
+The coverage number is a floor, not a fabricated target: if a focused change moves the measured total, update the README badge and CI command in the same PR.
+
 ## Branches and commits
 
 Start from an up-to-date `main` branch and use a focused branch name:
@@ -62,3 +75,17 @@ preserve the command's exit code and evidence output.
 Describe the user-visible behavior, the files changed, and the commands you ran. Keep screenshots and fixtures small and synthetic. Wait for the Windows/Python matrix and Markdown-link checks to pass before merging. Merge with squash and delete the topic branch; never force-push `main`.
 
 Review comments should be resolved with a follow-up commit or an explicit explanation. Security-sensitive reports belong in the private reporting channel described in [SECURITY.md](SECURITY.md), not in a public issue.
+
+## Issue labels
+
+Use the existing labels to make triage predictable:
+
+- `bug` — a reproducible behavior that contradicts the documented contract.
+- `enhancement` — a new capability or workflow improvement.
+- `documentation` — a README, guide, example, or Pages correction.
+- `accessibility` — a barrier in the static documentation or contribution flow.
+- `question` — a clarification request; include the smallest safe command and context.
+- `good first issue` and `help wanted` — maintainer-applied labels for tasks ready for outside help.
+- `dependencies` and `github_actions` — normally applied to dependency or workflow updates.
+
+Do not use a public label as a substitute for a vulnerability report. Credentials, private paths, session data, real samples, and full logs belong only in the private channel described by `SECURITY.md`.
