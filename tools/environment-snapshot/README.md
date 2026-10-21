@@ -20,6 +20,6 @@ python .\tools\environment-snapshot\02-snapshot-environments.py
 
 ```text
 $ python tools/environment-snapshot/02-snapshot-environments.py --version
-environment-snapshot 1.0.1
+environment-snapshot 1.0.2
 exit=0
 ```

@@ -17,6 +17,6 @@ python .\tools\verify-portability\verify-portability.py
 
 ```text
 $ python tools/verify-portability/verify-portability.py --version
-verify-portability 1.0.1
+verify-portability 1.0.2
 exit=0
 ```

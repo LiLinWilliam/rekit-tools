@@ -23,6 +23,6 @@ Get-Content .\entropy.json |
 
 ```text
 $ python tools/render-entropy/render_entropy.py --version
-render-entropy 1.0.1
+render-entropy 1.0.2
 exit=0
 ```

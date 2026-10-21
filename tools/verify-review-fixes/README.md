@@ -17,6 +17,6 @@ python .\tools\verify-review-fixes\verify-review-fixes.py
 
 ```text
 $ python tools/verify-review-fixes/verify-review-fixes.py --version
-verify-review-fixes 1.0.1
+verify-review-fixes 1.0.2
 exit=0
 ```

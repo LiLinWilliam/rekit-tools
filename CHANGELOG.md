@@ -4,18 +4,22 @@
 
 ## [Unreleased]
 
+No unreleased changes.
+
+## [1.0.2] - 2026-10-21
+
 ### Added
 
-- README 展示区、由真实 `render-entropy` 输出生成的压缩示例图和可复现终端命令。
-- 12 个工具 README 的完整用法、输入输出、退出码和安全边界说明。
-- `environment-snapshot` 与 `retry-watchdog` 的纯函数和临时 SQLite 测试。
-- Windows Python 3.10、3.11、3.12 的 CI 矩阵。
-- tag 触发的 GitHub Release notes 工作流和分类配置。
-- 安全边界与授权使用文档。
+- A visual README header, complete badge row, table of contents, Mermaid recovery flow, FAQ, roadmap, and design principles in English and Chinese.
+- Verified `--version` output examples in all 12 tool READMEs.
+- A GitHub Pages documentation workflow, static landing page, tool cards, and published documentation link.
+- Contributor Covenant, pre-commit hooks, expanded Ruff rules, measured coverage diagnostics, and stable tool exit-code documentation.
 
 ### Changed
 
-- 测试覆盖率从 23% 提升到 37%，当前测试套件为 20 passed。
+- The single version source is now `1.0.2`; all Python entry points and their tests read it consistently.
+- CI reports the measured 39.48% `tools/` coverage from 33 tests and enforces a 39% floor.
+- CI dependencies use the same pytest-cov major version locally and on the matrix runners.
 
 ## [1.0.1] - 2026-10-21
 
@@ -36,5 +40,6 @@
 - 发布公开仓库安全说明，明确不提交凭据、私有样本、会话数据库、日志和本地工具链。
 
 [Unreleased]: https://github.com/LiLinWilliam/rekit-tools/compare/v1.0.1...HEAD
+[1.0.2]: https://github.com/LiLinWilliam/rekit-tools/compare/v1.0.1...HEAD
 [1.0.1]: https://github.com/LiLinWilliam/rekit-tools/compare/v1.0.0...v1.0.1
 [1.0.0]: https://github.com/LiLinWilliam/rekit-tools/releases/tag/v1.0.0

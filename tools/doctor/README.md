@@ -25,6 +25,6 @@ The version-only path is safe to run before a full rekit root is available:
 
 ```text
 $ python tools/doctor/doctor.py --version
-doctor 1.0.1
+doctor 1.0.2
 exit=0
 ```
