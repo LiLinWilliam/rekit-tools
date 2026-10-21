@@ -13,3 +13,10 @@ python .\tools\verify-portability\verify-portability.py
 ## 输入与输出
 
 成功时终端会显示 PASS 并返回 0；缺少任一待复制路径、离线包或工具时会在对应步骤打印 FAIL，摘要的 ok 为 false，返回 1。该脚本验证的是迁移边界，不代表每个工具或完整 rekit 克隆都已验证。
+## Example output
+
+```text
+$ python tools/verify-portability/verify-portability.py --version
+verify-portability 1.0.1
+exit=0
+```

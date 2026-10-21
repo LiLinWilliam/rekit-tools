@@ -16,3 +16,14 @@ pwsh -File .\tools\migrate-after-move\00-after-move.ps1 --venv misc --online
 ## 输入与输出
 
 脚本依赖移动后 rekit 根目录中的 bin/repair.exe、bin/doctor.exe、requirements/ 与本地运行时。repair 的输出会直接转发到终端，成功后再看到 doctor 检查结果；任一步失败都会返回对应非零退出码。
+## Example output
+
+This repository does not include a rekit root or its `bin/repair.exe`, so executing the recovery wrapper here would be an invalid fixture. The checked-in PowerShell entry point was syntax-parsed locally:
+
+```text
+$ pwsh -NoProfile -Command "ParseFile('tools/migrate-after-move/00-after-move.ps1')"
+00-after-move.ps1: Parse status: OK
+exit=0
+```
+
+Run the wrapper only from an authorized rekit root; its runtime output comes from `repair.exe` and `doctor.exe`.

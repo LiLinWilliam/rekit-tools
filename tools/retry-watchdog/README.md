@@ -26,3 +26,10 @@ start.ps1 会在本目录的 logs/ 创建 PID、标准输出和错误日志；st
 ## 输入与输出
 
 输入是已授权的 thread UUID、可读的 CODEX_HOME SQLite 数据库和本机 Codex CLI。每轮状态会写入指定日志目录并打印 verdict；正常完成返回 0，参数、锁或执行器错误返回非零。不要把 SQLite、rollout、UUID 或日志提交到仓库。
+## Example output
+
+```text
+$ python tools/retry-watchdog/watchdog.py --version
+watchdog.py 1.0.1
+exit=0
+```

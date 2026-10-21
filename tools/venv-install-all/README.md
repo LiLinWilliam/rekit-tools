@@ -15,3 +15,12 @@ pwsh -File .\tools\venv-install-all\12-venv-install-all.ps1 --venv render --onli
 ## 输入与输出
 
 脚本需要 rekit 根目录的 bin/repair.exe 和 requirements 快照。repair 的标准输出和退出码直接返回给调用方；成功后可继续运行 doctor 验证导入与依赖。
+## Example output
+
+The wrapper was syntax-parsed locally; running it requires the `repair.exe` from an authorized rekit root:
+
+```text
+$ pwsh -NoProfile -Command "ParseFile('tools/venv-install-all/12-venv-install-all.ps1')"
+12-venv-install-all.ps1: Parse status: OK
+exit=0
+```

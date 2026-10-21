@@ -19,3 +19,10 @@ Get-Content .\entropy.json |
 ## 输入与输出
 
 程序从标准输入读取 JSON，位置参数是输出路径；无论传入什么扩展名，实际输出都会规范为 <路径>.png。成功退出码为 0，PNG 头为标准 89 50 4E 47。输入缺少 blocks、块字段无效或文件无法写入时，错误会写到 stderr 并返回 2。未安装 Pillow 时返回 3，并提示使用 render 环境恢复依赖。
+## Example output
+
+```text
+$ python tools/render-entropy/render_entropy.py --version
+render-entropy 1.0.1
+exit=0
+```

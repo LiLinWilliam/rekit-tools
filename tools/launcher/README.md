@@ -23,3 +23,12 @@ python .\tools\launcher\extract_xz.py .\tooling\frida
 ~~~
 
 对每个 *.xz，脚本解出同名无扩展名文件；目标文件已存在且非空时打印 keep <name> 并跳过。成功写入时打印 wrote <name> <字节数>。命令不递归目录，也不会删除压缩包。
+## Example output
+
+The extraction helper exposes the repository version without touching an archive:
+
+```text
+$ python tools/launcher/extract_xz.py --version
+launcher/extract_xz 1.0.1
+exit=0
+```
