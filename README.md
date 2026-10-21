@@ -154,4 +154,9 @@ The current test suite has 33 tests and reports 39% total statement coverage for
 
 ```powershell
 python -m pytest -q tests --cov=tools --cov-report=term-missing --cov-fail-under=39
+pwsh -NoProfile -ExecutionPolicy Bypass -File tests/powershell_smoke.ps1
 ```
+
+The PowerShell smoke check parses every `.ps1` tool and exercises the watchdog
+start/stop lifecycle with an injected process boundary, so it does not launch a
+real watcher or touch a private runtime. It runs as a separate Windows CI job.

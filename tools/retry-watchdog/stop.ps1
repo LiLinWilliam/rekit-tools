@@ -1,6 +1,9 @@
+param(
+    [string]$LogDir = (Join-Path $PSScriptRoot "logs")
+)
 $ErrorActionPreference = "Stop"
 $here = Split-Path -Parent $MyInvocation.MyCommand.Path
-$log  = Join-Path $here "logs"
+$log  = $LogDir
 $pidFile = Join-Path $log "watcher.pid"
 $lockFile = Join-Path $log "watchdog.lock"
 
