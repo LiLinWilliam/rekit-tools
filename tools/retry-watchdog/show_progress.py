@@ -1,5 +1,4 @@
 #!/usr/bin/env python3
-# -*- coding: utf-8 -*-
 """查看某个 Codex 会话的最新进展（读 rollout，不碰任何运行中的东西）。
 
 用法:
@@ -7,7 +6,11 @@
   python show_progress.py <thread-id>        # 看某会话最近 20 条事件
   python show_progress.py <thread-id> -n 50
 """
-import os, sys, sqlite3, json, datetime
+import datetime
+import json
+import os
+import sqlite3
+import sys
 from pathlib import Path
 
 HOME = Path(os.environ.get("CODEX_HOME") or (Path.home() / ".codex"))

@@ -1,9 +1,9 @@
 ﻿"""Record package versions and local source revisions without upgrades."""
 import datetime
 import json
-from pathlib import Path
 import subprocess
 import sys
+from pathlib import Path
 from urllib.parse import unquote, urlparse
 
 

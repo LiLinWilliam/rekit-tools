@@ -26,5 +26,5 @@ line-length = 100
 extend-exclude = [".git", "venv", "toolchain", "samples", "logs", "cache", "temp", "tmp", "backups"]
 
 [tool.ruff.lint]
-select = ["E4", "E9", "F"]
+select = ["E4", "E9", "F", "I", "UP009", "B", "SIM112", "SIM114"]
 ignore = ["E401", "E501"]

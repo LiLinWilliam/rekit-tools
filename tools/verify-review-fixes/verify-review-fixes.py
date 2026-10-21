@@ -2,13 +2,13 @@
 import datetime
 import json
 import os
-from pathlib import Path
 import re
 import shutil
 import struct
 import subprocess
 import sys
 import uuid
+from pathlib import Path
 
 ROOT = Path(__file__).resolve().parent.parent
 
@@ -19,7 +19,7 @@ def main():
     logs = ROOT / "logs"
     results = []
     clean = {k: v for k, v in os.environ.items() if not k.startswith("REKIT_")}
-    clean["PATH"] = str(Path(os.environ["SystemRoot"]) / "System32")
+    clean["PATH"] = str(Path(os.environ["SYSTEMROOT"]) / "System32")
     clean["VIRTUAL_ENV"] = str(scratch / "nonexistent-qiling")
     raw = ROOT / "build/cargo-target/release/binwalk.exe"
     sample = ROOT / "bin/rekit.exe"
@@ -32,7 +32,7 @@ def main():
             stdout, stderr = proc.communicate(timeout=timeout)
             ok = valid(proc.returncode, stdout, stderr)
         except subprocess.TimeoutExpired:
-            subprocess.run([str(Path(os.environ["SystemRoot"]) / "System32/taskkill.exe"),
+            subprocess.run([str(Path(os.environ["SYSTEMROOT"]) / "System32/taskkill.exe"),
                             "/PID", str(proc.pid), "/T", "/F"], capture_output=True)
             stdout, stderr = proc.communicate()
             ok = False

@@ -3,10 +3,10 @@ import argparse
 import datetime
 import json
 import os
-from pathlib import Path
 import subprocess
 import sys
 import time
+from pathlib import Path
 
 sys.path.insert(0, str(Path(__file__).resolve().parent.parent / "bin"))
 from _environment import ROOT, VENVS, create_directories, environment, python_runtime
