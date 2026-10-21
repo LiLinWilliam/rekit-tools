@@ -20,3 +20,10 @@ $ python tools/verify-portability/verify-portability.py --version
 verify-portability 1.0.2
 exit=0
 ```
+## Exit codes
+
+`0` means all portability checks passed; `1` means a required path, package, or tool check failed. `--version` returns `0`. See the [repository exit-code contract](../../docs/exit-code-contract.md) for the automation rules.
+
+## Security notes
+
+Run from an authorized complete runtime. The tool copies files into temporary portable paths and writes logs; inspect the boundary and remove sensitive evidence after review. See [security boundaries](../../docs/security-boundaries.md) before running against a real runtime.

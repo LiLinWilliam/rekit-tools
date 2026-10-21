@@ -32,3 +32,10 @@ exit=0
 ```
 
 A successful build prints its own version or readiness marker; missing sources, caches, or toolchain dependencies terminate with a non-zero PowerShell error.
+## Exit codes
+
+`0` means the selected installer completed. Missing sources, build tools, downloads, or import checks raise a PowerShell error and produce a non-zero status. See the [repository exit-code contract](../../docs/exit-code-contract.md) for the automation rules.
+
+## Security notes
+
+Install into the rekit-owned toolchain and cache directories. `-Online` is an explicit network action; review the source and keep generated binaries and private logs out of the repository. See [security boundaries](../../docs/security-boundaries.md) before running against a real runtime.

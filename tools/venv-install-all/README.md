@@ -24,3 +24,10 @@ $ pwsh -NoProfile -Command "ParseFile('tools/venv-install-all/12-venv-install-al
 12-venv-install-all.ps1: Parse status: OK
 exit=0
 ```
+## Exit codes
+
+The wrapper forwards the status from `repair.exe`; successful repair returns `0`, and a repair failure is non-zero. See the [repository exit-code contract](../../docs/exit-code-contract.md) for the automation rules.
+
+## Security notes
+
+Run `--check-only` before changing environments and keep the default offline behavior. Use only an authorized rekit root; never point the wrapper at a system or third-party environment. See [security boundaries](../../docs/security-boundaries.md) before running against a real runtime.

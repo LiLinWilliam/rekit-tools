@@ -26,3 +26,10 @@ $ python tools/render-entropy/render_entropy.py --version
 render-entropy 1.0.2
 exit=0
 ```
+## Exit codes
+
+`0` means a PNG was written; `2` means invalid JSON, block data, or file I/O; `3` means Pillow is unavailable. `--version` returns `0`. See the [repository exit-code contract](../../docs/exit-code-contract.md) for the automation rules.
+
+## Security notes
+
+Process only authorized analysis output and choose an output path inside the approved working directory. Do not add real samples or generated images to the repository. See [security boundaries](../../docs/security-boundaries.md) before running against a real runtime.

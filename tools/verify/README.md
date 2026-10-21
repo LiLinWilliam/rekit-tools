@@ -21,3 +21,10 @@ $ python tools/verify/verify.py --version
 verify 1.0.2
 exit=0
 ```
+## Exit codes
+
+`0` means every acceptance check passed; `1` means at least one check failed. `--version` returns `0`. See the [repository exit-code contract](../../docs/exit-code-contract.md) for the automation rules.
+
+## Security notes
+
+`REKIT_SAMPLE_APK` must reference an authorized sample. Logs include command output and path fingerprints; redact them and keep them outside public commits. See [security boundaries](../../docs/security-boundaries.md) before running against a real runtime.

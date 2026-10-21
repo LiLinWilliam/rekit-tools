@@ -27,3 +27,10 @@ exit=0
 ```
 
 Run the wrapper only from an authorized rekit root; its runtime output comes from `repair.exe` and `doctor.exe`.
+## Exit codes
+
+The wrapper forwards the status from `repair.exe` and then `doctor.exe`; either failure is non-zero. A successful migration returns `0`. See the [repository exit-code contract](../../docs/exit-code-contract.md) for the automation rules.
+
+## Security notes
+
+Use `--check-only` first and run from an authorized rekit root. `--online` is an explicit network permission and should be enabled only after reviewing the boundary guide. See [security boundaries](../../docs/security-boundaries.md) before running against a real runtime.

@@ -32,3 +32,10 @@ $ python tools/launcher/extract_xz.py --version
 launcher/extract_xz 1.0.2
 exit=0
 ```
+## Exit codes
+
+`0` means extraction or the launcher build completed. Archive, output, compiler, or PowerShell errors return a non-zero status. See the [repository exit-code contract](../../docs/exit-code-contract.md) for the automation rules.
+
+## Security notes
+
+Build only from authorized source trees and keep generated `bin/` files out of commits. `extract_xz.py` writes into the directory supplied on the command line. See [security boundaries](../../docs/security-boundaries.md) before running against a real runtime.

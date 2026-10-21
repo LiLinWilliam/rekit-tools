@@ -26,3 +26,10 @@ $ python tools/restore/restore.py --version
 restore 1.0.2
 exit=0
 ```
+## Exit codes
+
+`0` means every selected environment passed restore and verification; `1` means a restore or rollback failed. `--version` returns `0`. See the [repository exit-code contract](../../docs/exit-code-contract.md) for the automation rules.
+
+## Security notes
+
+Start with `--check-only` and the default offline mode. The command can move virtual environments into `backups/`; confirm authorization and backup scope before enabling writes or `--online`. See [security boundaries](../../docs/security-boundaries.md) before running against a real runtime.

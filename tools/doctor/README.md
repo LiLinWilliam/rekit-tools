@@ -28,3 +28,10 @@ $ python tools/doctor/doctor.py --version
 doctor 1.0.2
 exit=0
 ```
+## Exit codes
+
+`0` means every health check passed; `1` means at least one check failed. `90-doctor.ps1` forwards the status from `doctor.exe`. See the [repository exit-code contract](../../docs/exit-code-contract.md) for the automation rules.
+
+## Security notes
+
+The script reads the authorized rekit runtime and may write `logs/doctor.*`. Use `--no-write` for a read-only audit and redact paths before sharing evidence. See [security boundaries](../../docs/security-boundaries.md) before running against a real runtime.
