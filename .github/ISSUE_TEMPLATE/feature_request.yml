@@ -1,0 +1,37 @@
+﻿name: Feature request
+description: Suggest an improvement for authorized research and maintenance workflows.
+title: "[Feature]: "
+labels:
+  - enhancement
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Requests must stay within the project's authorized research and safety boundaries.
+        Do not include credentials, private paths, real samples, or session data.
+  - type: textarea
+    id: problem
+    attributes:
+      label: Problem to solve
+      description: What workflow is difficult or missing today?
+    validations:
+      required: true
+  - type: textarea
+    id: proposal
+    attributes:
+      label: Proposed behavior
+      description: Describe the smallest useful change and its expected input/output.
+    validations:
+      required: true
+  - type: textarea
+    id: alternatives
+    attributes:
+      label: Alternatives considered
+      description: List safe workarounds or other designs you considered.
+  - type: checkboxes
+    id: authorization
+    attributes:
+      label: Safety acknowledgement
+      options:
+        - label: This request is for an authorized environment and contains no secrets or private data.
+          required: true

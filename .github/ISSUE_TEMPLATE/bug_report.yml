@@ -1,0 +1,43 @@
+﻿name: Bug report
+description: Report a reproducible problem in an authorized environment.
+title: "[Bug]: "
+labels:
+  - bug
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Do not include credentials, private paths, real samples, session IDs, or full logs.
+        Follow SECURITY.md for sensitive reports.
+  - type: textarea
+    id: description
+    attributes:
+      label: What happened?
+      description: Describe the observed behavior and the expected behavior.
+      placeholder: The command produced ... but I expected ...
+    validations:
+      required: true
+  - type: textarea
+    id: reproduce
+    attributes:
+      label: Reproduction steps
+      description: Include the smallest safe command and input that reproduces the issue.
+      placeholder: |
+        1. Run ...
+        2. Observe ...
+    validations:
+      required: true
+  - type: input
+    id: environment
+    attributes:
+      label: Environment
+      description: Python, PowerShell, Windows, and tool version. Avoid private paths.
+      placeholder: Windows 11; Python 3.12; rekit-tools v1.0.1
+    validations:
+      required: true
+  - type: textarea
+    id: logs
+    attributes:
+      label: Sanitized output
+      description: Paste only redacted output. Remove tokens, session IDs, and personal data.
+      render: text
