@@ -132,4 +132,3 @@ def test_runner_run_cmd_captures_success_and_failure(tmp_path):
     assert success["stdout"] == "ok"
     assert failure["ok"] is False
     assert failure["rc"] == 7
-

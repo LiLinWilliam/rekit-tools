@@ -1,0 +1,23 @@
+﻿# See https://pre-commit.com for more information.
+ci:
+  autofix_commit_msg: 'chore: auto-fix pre-commit hooks'
+
+default_language_version:
+  python: python3.10
+
+exclude: ^(venv|toolchain|samples|logs|cache|temp|tmp|backups)/
+
+repos:
+  - repo: https://github.com/pre-commit/pre-commit-hooks
+    rev: v6.0.0
+    hooks:
+      - id: check-merge-conflict
+      - id: check-yaml
+      - id: end-of-file-fixer
+      - id: trailing-whitespace
+
+  - repo: https://github.com/astral-sh/ruff-pre-commit
+    rev: v0.17.1
+    hooks:
+      - id: ruff-check
+        args: [--output-format, concise]

@@ -40,7 +40,7 @@ jobs:
 
       - name: Run Ruff
         shell: pwsh
-        run: python -m ruff check tools tests src
+        run: python -m ruff check tools tests src examples/safe_smoke.py
 
       - name: Compile Python files
         shell: pwsh
