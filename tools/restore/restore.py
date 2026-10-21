@@ -7,8 +7,17 @@ import sys
 import uuid
 from pathlib import Path
 
+_VERSION_ROOT = Path(__file__).resolve().parents[1]
+if str(_VERSION_ROOT) not in sys.path:
+    sys.path.insert(0, str(_VERSION_ROOT))
+from _version import add_version, print_version, version_only  # noqa: E402
+
+if version_only():
+    print_version("restore")
+    raise SystemExit(0)
+
 sys.path.insert(0, str(Path(__file__).resolve().parent.parent / "bin"))
-from _environment import ROOT, VENVS, create_directories, environment, python_runtime
+from _environment import ROOT, VENVS, create_directories, environment, python_runtime  # noqa: E402
 
 IMPORTS = {
     "buildtools": "import cmake,mesonbuild; print('buildtools ok')",
@@ -42,6 +51,7 @@ def run(argv, env, log):
 
 def main():
     parser = argparse.ArgumentParser(description=__doc__)
+    add_version(parser)
     parser.add_argument("--venv", choices=VENVS, action="append")
     parser.add_argument("--online", action="store_true", help="explicitly permit index access; default is offline")
     parser.add_argument("--check-only", action="store_true", help="verify fresh temporary venvs without replacing installed ones")

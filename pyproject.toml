@@ -4,7 +4,7 @@ build-backend = "setuptools.build_meta"
 
 [project]
 name = "rekit-tools"
-version = "1.0.1"
+dynamic = ["version"]
 description = "Auditable Windows helpers for a local rekit runtime"
 readme = "README.md"
 requires-python = ">=3.10"
@@ -16,6 +16,9 @@ dependencies = []
 
 [project.scripts]
 rekit-tools = "rekit_tools.cli:main"
+
+[tool.setuptools.dynamic]
+version = { attr = "rekit_tools.__version__" }
 
 [tool.setuptools.packages.find]
 where = ["src"]

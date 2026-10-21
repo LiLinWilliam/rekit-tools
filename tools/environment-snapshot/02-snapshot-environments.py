@@ -6,6 +6,11 @@ import sys
 from pathlib import Path
 from urllib.parse import unquote, urlparse
 
+_VERSION_ROOT = Path(__file__).resolve().parents[1]
+if str(_VERSION_ROOT) not in sys.path:
+    sys.path.insert(0, str(_VERSION_ROOT))
+from _version import print_version, version_only  # noqa: E402, I001
+
 
 def parse_freeze_output(stdout, root, revision_resolver=None):
     """Parse ``pip freeze`` output into pinned requirements and source metadata."""
@@ -34,6 +39,9 @@ def parse_freeze_output(stdout, root, revision_resolver=None):
 
 
 def main():
+    if version_only():
+        print_version("environment-snapshot")
+        return 0
     sys.path.insert(0, str(Path(__file__).resolve().parent.parent / "bin"))
     from _environment import ROOT, VENVS, environment
 
