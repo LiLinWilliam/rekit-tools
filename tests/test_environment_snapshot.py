@@ -1,4 +1,6 @@
-﻿from conftest import load_tool
+﻿import pytest
+
+from conftest import load_tool
 
 
 snapshot = load_tool(
@@ -20,3 +22,36 @@ def test_parse_freeze_output_rejects_unpinned_requirement(tmp_path):
     else:
         raise AssertionError("unpinned requirements must be rejected")
 
+
+def test_parse_freeze_output_records_editable_source_revision(tmp_path):
+    root = tmp_path / "rekit"
+    source = root / "src" / "demo"
+    source.mkdir(parents=True)
+
+    pins, sources = snapshot.parse_freeze_output(
+        "\n-e " + source.as_uri() + "\nPillow==12.2.0\n",
+        root,
+        revision_resolver=lambda path: "deadbeef",
+    )
+
+    assert pins == ["-e ./src/demo", "Pillow==12.2.0"]
+    assert sources == [{"path": "src/demo", "commit": "deadbeef"}]
+
+
+def test_parse_freeze_output_rejects_editable_source_outside_root(tmp_path):
+    root = tmp_path / "rekit"
+    outside = tmp_path / "outside"
+    root.mkdir()
+    outside.mkdir()
+
+    with pytest.raises(ValueError):
+        snapshot.parse_freeze_output("-e " + outside.as_uri(), root,
+                                     revision_resolver=lambda path: "ignored")
+
+
+def test_parse_freeze_output_accepts_multiple_pinned_lines(tmp_path):
+    pins, sources = snapshot.parse_freeze_output(
+        "Pillow==12.2.0\npytest==9.1.1\n", tmp_path
+    )
+    assert pins == ["Pillow==12.2.0", "pytest==9.1.1"]
+    assert sources == []
