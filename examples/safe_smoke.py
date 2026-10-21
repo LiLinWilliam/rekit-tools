@@ -16,7 +16,6 @@ from pathlib import Path
 
 from rekit_tools import __version__
 
-
 ROOT = Path(__file__).resolve().parents[1]
 
 

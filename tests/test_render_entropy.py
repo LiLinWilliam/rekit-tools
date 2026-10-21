@@ -20,4 +20,3 @@ def test_render_writes_expected_png(tmp_path):
     assert entropy.render({"blocks": [{"start": 0, "end": 8, "entropy": 4}]}, output) == 0
     png = output.with_suffix(".png")
     assert png.read_bytes()[:8] == b"\x89PNG\r\n\x1a\n"
-

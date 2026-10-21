@@ -1,4 +1,4 @@
-﻿# Contributing to rekit-tools
+# Contributing to rekit-tools
 
 Thank you for improving rekit-tools. Changes should stay auditable, reproducible, and scoped to this repository's twelve Windows helper tools.
 
@@ -16,6 +16,16 @@ python -m pytest -q tests --cov=tools --cov-report=term-missing
 ```
 
 The editable install provides the `rekit-tools` command. `rekit-tools --version` and `rekit-tools list` are safe local smoke tests.
+
+Install the optional pre-commit runner once, then enable the repository hooks:
+
+```powershell
+python -m pip install --disable-pip-version-check pre-commit
+pre-commit install
+pre-commit run --all-files
+```
+
+The hooks apply the repository Ruff configuration and basic YAML, whitespace, and merge-conflict checks. The CI matrix remains the final check for Windows-specific behavior.
 
 ## Branches and commits
 
