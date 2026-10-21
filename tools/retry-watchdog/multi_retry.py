@@ -1,11 +1,16 @@
 #!/usr/bin/env python3
-# -*- coding: utf-8 -*-
 """multi_retry.py - 同一会话上轮换多个模型/档位死磕，直到某个模型能跑完 turn。
 
 同一 thread 同一时刻只能有一个 writer，所以这里是"轮换"而不是并发撞锁：
 每次失败后换下一组 (model, effort)，无限循环，直到 turn.completed。
 """
-import argparse, json, os, shutil, subprocess, sys, time
+import argparse
+import json
+import os
+import shutil
+import subprocess
+import sys
+import time
 from datetime import datetime
 from pathlib import Path
 

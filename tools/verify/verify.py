@@ -3,12 +3,12 @@ import datetime
 import hashlib
 import json
 import os
-from pathlib import Path
 import struct
 import subprocess
 import sys
 import time
 import uuid
+from pathlib import Path
 
 ROOT = Path(__file__).resolve().parent.parent
 
@@ -41,7 +41,7 @@ def main():
     before = {str(p): fingerprint(p) for p in protected}
     # Simulate an ordinary Windows machine with no developer tools on PATH.
     clean = dict(os.environ)
-    clean["PATH"] = str(Path(os.environ["SystemRoot"]) / "System32")
+    clean["PATH"] = str(Path(os.environ["SYSTEMROOT"]) / "System32")
     clean["JAVA_HOME"] = "Z:/not-installed"
     clean["PYTHONPATH"] = "Z:/not-installed"
     results = []
@@ -56,7 +56,7 @@ def main():
             ok = proc.returncode == expected_exit and validator(stdout)
             error = None
         except subprocess.TimeoutExpired:
-            subprocess.run([str(Path(os.environ["SystemRoot"]) / "System32/taskkill.exe"), "/PID", str(proc.pid), "/T", "/F"],
+            subprocess.run([str(Path(os.environ["SYSTEMROOT"]) / "System32/taskkill.exe"), "/PID", str(proc.pid), "/T", "/F"],
                            capture_output=True)
             stdout, stderr = proc.communicate()
             ok, error = False, "timeout"

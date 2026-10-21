@@ -1,6 +1,5 @@
 from conftest import load_tool
 
-
 entropy = load_tool("tools/render-entropy/render_entropy.py", "render_entropy")
 
 

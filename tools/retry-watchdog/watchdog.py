@@ -1,5 +1,4 @@
 #!/usr/bin/env python3
-# -*- coding: utf-8 -*-
 """
 Codex 自动重试守护 (watchdog)
 =================================
@@ -72,7 +71,7 @@ def find_codex_exe() -> str:
     local = os.environ.get("LOCALAPPDATA")
     if local:
         bases.append(Path(local) / "OpenAI" / "Codex" / "bin")
-    pf = os.environ.get("ProgramFiles")
+    pf = os.environ.get("PROGRAMFILES")
     if pf:
         bases.append(Path(pf) / "OpenAI" / "Codex" / "bin")
     found = []
@@ -167,9 +166,7 @@ class CodexState:
     def thread_rows(self, thread_id: str):
         rows = []
         for r in self.recent_rows:
-            if r["thread_id"] == thread_id:
-                rows.append(r)
-            elif not r["thread_id"] and thread_id in r["body"]:
+            if r["thread_id"] == thread_id or (not r["thread_id"] and thread_id in r["body"]):
                 rows.append(r)
         return rows
 

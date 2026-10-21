@@ -4,7 +4,6 @@ import sys
 
 from conftest import load_tool
 
-
 watchdog = load_tool("tools/retry-watchdog/watchdog.py", "watchdog")
 
 

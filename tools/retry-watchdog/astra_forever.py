@@ -1,5 +1,4 @@
 #!/usr/bin/env python3
-# -*- coding: utf-8 -*-
 """astra_forever.py - 用 astra + ultra 死磕一个会话，直到 turn 成功完成。
 
 前提：Codex 桌面端已关闭（否则 thread 写锁被占，exec resume 会报 active writer）。

@@ -1,7 +1,5 @@
 ﻿import pytest
-
 from conftest import load_tool
-
 
 snapshot = load_tool(
     "tools/environment-snapshot/02-snapshot-environments.py", "environment_snapshot"

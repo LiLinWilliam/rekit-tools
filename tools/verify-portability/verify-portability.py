@@ -2,12 +2,12 @@
 import datetime
 import json
 import os
-from pathlib import Path
 import shutil
 import struct
 import subprocess
 import sys
 import uuid
+from pathlib import Path
 
 ROOT = Path(__file__).resolve().parent.parent
 
@@ -16,7 +16,7 @@ def main():
     target = ROOT / "temp" / ("portable path-" + uuid.uuid4().hex[:8])
     target.mkdir(parents=True)
     env = dict(os.environ)
-    env["PATH"] = str(Path(os.environ["SystemRoot"]) / "System32")
+    env["PATH"] = str(Path(os.environ["SYSTEMROOT"]) / "System32")
     env["JAVA_HOME"] = "Z:/not-installed"
     env["PYTHONPATH"] = "Z:/not-installed"
     for key in tuple(env):

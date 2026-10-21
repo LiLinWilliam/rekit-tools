@@ -1,11 +1,11 @@
 """Restore exact installed versions offline, with rollback on failure."""
 import argparse
 import datetime
-from pathlib import Path
 import shutil
 import subprocess
 import sys
 import uuid
+from pathlib import Path
 
 sys.path.insert(0, str(Path(__file__).resolve().parent.parent / "bin"))
 from _environment import ROOT, VENVS, create_directories, environment, python_runtime
