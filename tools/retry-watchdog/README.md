@@ -30,6 +30,6 @@ start.ps1 会在本目录的 logs/ 创建 PID、标准输出和错误日志；st
 
 ```text
 $ python tools/retry-watchdog/watchdog.py --version
-watchdog.py 1.0.1
+watchdog.py 1.0.2
 exit=0
 ```

@@ -29,6 +29,6 @@ The extraction helper exposes the repository version without touching an archive
 
 ```text
 $ python tools/launcher/extract_xz.py --version
-launcher/extract_xz 1.0.1
+launcher/extract_xz 1.0.2
 exit=0
 ```

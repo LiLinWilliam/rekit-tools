@@ -18,6 +18,6 @@ REKIT_SAMPLE_APK 必须指向已获授权的 APK；不设置时脚本会使用�
 
 ```text
 $ python tools/verify/verify.py --version
-verify 1.0.1
+verify 1.0.2
 exit=0
 ```

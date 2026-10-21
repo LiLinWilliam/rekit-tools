@@ -23,6 +23,6 @@ The version-only path avoids importing the rekit runtime and is safe in this rep
 
 ```text
 $ python tools/restore/restore.py --version
-restore 1.0.1
+restore 1.0.2
 exit=0
 ```
