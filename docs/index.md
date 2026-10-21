@@ -58,6 +58,26 @@ The tools are intentionally small: each keeps its command-specific details besid
 | verify-portability | [tools/verify-portability](../tools/verify-portability/README.md) |
 | verify-review-fixes | [tools/verify-review-fixes](../tools/verify-review-fixes/README.md) |
 
+## Pages tool references
+
+These short pages are the static-site entry points. Each page keeps the first
+safe command visible and links back to the full source README and its edit view.
+
+| Tool | Published page source |
+| --- | --- |
+| doctor | [doctor](tools/doctor.md) |
+| environment-snapshot | [environment-snapshot](tools/environment-snapshot.md) |
+| launcher | [launcher](tools/launcher.md) |
+| migrate-after-move | [migrate-after-move](tools/migrate-after-move.md) |
+| render-entropy | [render-entropy](tools/render-entropy.md) |
+| restore | [restore](tools/restore.md) |
+| retry-watchdog | [retry-watchdog](tools/retry-watchdog.md) |
+| toolchain-installers | [toolchain-installers](tools/toolchain-installers.md) |
+| venv-install-all | [venv-install-all](tools/venv-install-all.md) |
+| verify | [verify](tools/verify.md) |
+| verify-portability | [verify-portability](tools/verify-portability.md) |
+| verify-review-fixes | [verify-review-fixes](tools/verify-review-fixes.md) |
+
 ## CI and release
 
 - [Continuous integration](../.github/workflows/ci.yml)
