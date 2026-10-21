@@ -1,0 +1,2 @@
+# Dedicated entropy PNG renderer; independent of qiling.
+pillow==10.4.0

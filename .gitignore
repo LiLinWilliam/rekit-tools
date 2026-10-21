@@ -1,0 +1,43 @@
+﻿# Python and local environments
+venv/
+.venv/
+env/
+ENV/
+__pycache__/
+*.py[cod]
+
+# Runtime output and private state
+logs/
+reports/
+*.log
+*.jsonl
+samples/
+user-home/
+cache/
+temp/
+tmp/
+backups/
+toolchain/
+projects/
+capa/rules/
+
+# Native and archive artifacts
+*.exe
+*.dll
+*.zip
+*.7z
+*.xz
+*.tar
+*.so
+*.dylib
+
+# Local secrets and machine metadata
+.env
+.env.*
+*.pem
+*.key
+*.pfx
+*.p12
+*.sqlite
+.DS_Store
+Thumbs.db
