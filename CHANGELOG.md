@@ -14,12 +14,16 @@ No unreleased changes.
 - Verified `--version` output examples in all 12 tool READMEs.
 - A GitHub Pages documentation workflow, static landing page, tool cards, and published documentation link.
 - Contributor Covenant, pre-commit hooks, expanded Ruff rules, measured coverage diagnostics, and stable tool exit-code documentation.
+- A dependency-free PowerShell smoke job that parses all checked-in scripts and exercises the watchdog lifecycle with mocks.
+- Searchable static Pages for all 12 tools, including result feedback, responsive navigation, Back to top controls, and Edit on GitHub links.
+- Exit-code and security-note sections in every tool README, linked to the repository contracts.
 
 ### Changed
 
 - The single version source is now `1.0.2`; all Python entry points and their tests read it consistently.
-- CI reports the measured 39.48% `tools/` coverage from 33 tests and enforces a 39% floor.
+- CI reports the measured 49.35% `tools/` coverage from 49 tests and enforces a 49% floor.
 - CI dependencies use the same pytest-cov major version locally and on the matrix runners.
+- CONTRIBUTING now includes a copy/paste validation block and the repository's issue-label meanings.
 
 ## [1.0.1] - 2026-10-21
 
