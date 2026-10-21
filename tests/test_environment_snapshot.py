@@ -49,7 +49,7 @@ def test_parse_freeze_output_rejects_editable_source_outside_root(tmp_path):
 
 def test_parse_freeze_output_accepts_multiple_pinned_lines(tmp_path):
     pins, sources = snapshot.parse_freeze_output(
-        "Pillow==12.2.0\npytest==9.1.1\n", tmp_path
+        "\n  \nPillow==12.2.0\npytest==9.1.1\n", tmp_path
     )
     assert pins == ["Pillow==12.2.0", "pytest==9.1.1"]
     assert sources == []

@@ -3,10 +3,12 @@ import sys
 from pathlib import Path
 
 import pytest
+from conftest import load_tool
 
 from rekit_tools import __version__
 
 ROOT = Path(__file__).parents[1]
+version_helpers = load_tool("tools/_version.py", "version_helpers")
 VERSION_TOOLS = [
     "tools/doctor/doctor.py",
     "tools/environment-snapshot/02-snapshot-environments.py",
@@ -35,3 +37,17 @@ def test_version_flag_is_safe_and_consistent(relative_path):
     )
     assert result.returncode == 0, result.stderr
     assert result.stdout.strip().endswith(f" {__version__}"), result.stdout
+
+
+def test_version_text_uses_the_single_source_version():
+    assert version_helpers.version_text("demo") == f"demo {__version__}"
+
+
+@pytest.mark.parametrize("argv, expected", [([], False), (["--help"], False), (["--version"], True)])
+def test_version_only_accepts_only_the_version_flag(argv, expected):
+    assert version_helpers.version_only(argv) is expected
+
+
+def test_print_version_writes_one_line(capsys):
+    version_helpers.print_version("demo")
+    assert capsys.readouterr().out == f"demo {__version__}\n"
