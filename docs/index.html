@@ -4,50 +4,45 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>rekit-tools documentation</title>
-  <style>
-    :root { color-scheme: light; --ink:#172b4d; --muted:#52657d; --line:#dbe5ef; --panel:#fff; --accent:#0b6e99; --bg:#f4f8fb; }
-    * { box-sizing:border-box; }
-    body { margin:0; background:var(--bg); color:var(--ink); font:16px/1.6 "Segoe UI",system-ui,sans-serif; }
-    main { max-width:1120px; margin:0 auto; padding:28px 20px 64px; }
-    .hero { width:100%; border-radius:18px; box-shadow:0 18px 45px #10223c22; }
-    .intro { margin:28px 0 32px; max-width:760px; }
-    h1 { font-size:clamp(2rem,4vw,3.2rem); margin:0 0 8px; }
-    h2 { margin-top:38px; }
-    p { color:var(--muted); }
-    .cards { display:grid; grid-template-columns:repeat(auto-fit,minmax(230px,1fr)); gap:16px; }
-    .card { background:var(--panel); border:1px solid var(--line); border-radius:14px; padding:20px; box-shadow:0 8px 24px #10223c0d; }
-    .card h3 { margin:0 0 8px; font-size:1.1rem; }
-    .card a { color:var(--accent); font-weight:650; text-decoration:none; }
-    .card a:hover { text-decoration:underline; }
-    nav { display:flex; flex-wrap:wrap; gap:12px; margin:20px 0; }
-    nav a { color:var(--accent); }
-    code { background:#e8f0f6; border-radius:5px; padding:2px 5px; }
-    footer { border-top:1px solid var(--line); margin-top:42px; padding-top:18px; color:var(--muted); }
-  </style>
+  <link rel="stylesheet" href="assets/docs.css">
 </head>
 <body>
   <main>
     <img class="hero" src="assets/banner.svg" alt="rekit-tools: auditable Windows tooling">
     <section class="intro">
       <h1>Documentation</h1>
-      <p>Small, auditable commands for snapshotting, restoring, verifying and observing a private Windows runtime. Start with the safety boundaries, then choose the tool card that matches the job.</p>
+      <p>Small, auditable commands for snapshotting, restoring, verifying and observing a private Windows runtime. Start with the safety boundaries, then choose a tool page.</p>
       <nav>
         <a href="https://github.com/LiLinWilliam/rekit-tools/blob/main/README.md">Project overview</a>
-        <a href="https://github.com/LiLinWilliam/rekit-tools/blob/main/docs/security-boundaries.md">Security boundaries</a>
-        <a href="https://github.com/LiLinWilliam/rekit-tools/blob/main/docs/troubleshooting.md">Troubleshooting</a>
-        <a href="https://github.com/LiLinWilliam/rekit-tools/blob/main/docs/index.md">Markdown index</a>
+        <a href="security-boundaries.md">Security boundaries</a>
+        <a href="troubleshooting.md">Troubleshooting</a>
+        <a href="index.md">Markdown index</a>
       </nav>
     </section>
-    <h2>Tool cards</h2>
-    <section class="cards">
-      <article class="card"><h3>Audit and evidence</h3><p>Health, functional, portability and review regression checks.</p><a href="https://github.com/LiLinWilliam/rekit-tools/tree/main/tools/doctor">Open audit tools →</a></article>
-      <article class="card"><h3>State and recovery</h3><p>Capture locked environments and restore them offline after a move.</p><a href="https://github.com/LiLinWilliam/rekit-tools/tree/main/tools/restore">Open recovery tools →</a></article>
-      <article class="card"><h3>Rendering and launchers</h3><p>Produce deterministic entropy images and native Windows entry points.</p><a href="https://github.com/LiLinWilliam/rekit-tools/tree/main/tools/render-entropy">Open renderer tools →</a></article>
-      <article class="card"><h3>Toolchains and sessions</h3><p>Build isolated toolchains and observe authorized Codex sessions.</p><a href="https://github.com/LiLinWilliam/rekit-tools/tree/main/tools/toolchain-installers">Open runtime tools →</a></article>
+    <h2>Find a tool</h2>
+    <label for="tool-search">Filter the 12 tool pages by name or purpose</label>
+    <p><input id="tool-search" class="search" type="search" placeholder="Try: restore, audit, Codex..." data-tool-search></p>
+    <section class="cards" aria-live="polite">
+      <article class="card" data-tool-card data-search="doctor audit and evidence health and native-boundary checks."><h3>doctor</h3><p><strong>Audit and evidence</strong><br>Health and native-boundary checks.</p><a href="tools/doctor.html">Open tool page &rarr;</a></article>
+      <article class="card" data-tool-card data-search="environment-snapshot state and recovery capture locked packages and source revisions."><h3>environment-snapshot</h3><p><strong>State and recovery</strong><br>Capture locked packages and source revisions.</p><a href="tools/environment-snapshot.html">Open tool page &rarr;</a></article>
+      <article class="card" data-tool-card data-search="launcher rendering and launchers build launchers and unpack archives."><h3>launcher</h3><p><strong>Rendering and launchers</strong><br>Build launchers and unpack archives.</p><a href="tools/launcher.html">Open tool page &rarr;</a></article>
+      <article class="card" data-tool-card data-search="migrate-after-move state and recovery recover a moved runtime safely."><h3>migrate-after-move</h3><p><strong>State and recovery</strong><br>Recover a moved runtime safely.</p><a href="tools/migrate-after-move.html">Open tool page &rarr;</a></article>
+      <article class="card" data-tool-card data-search="render-entropy rendering and launchers turn entropy json into a png."><h3>render-entropy</h3><p><strong>Rendering and launchers</strong><br>Turn entropy JSON into a PNG.</p><a href="tools/render-entropy.html">Open tool page &rarr;</a></article>
+      <article class="card" data-tool-card data-search="restore state and recovery restore locked virtual environments."><h3>restore</h3><p><strong>State and recovery</strong><br>Restore locked virtual environments.</p><a href="tools/restore.html">Open tool page &rarr;</a></article>
+      <article class="card" data-tool-card data-search="retry-watchdog toolchains and sessions observe and retry authorized codex sessions."><h3>retry-watchdog</h3><p><strong>Toolchains and sessions</strong><br>Observe and retry authorized Codex sessions.</p><a href="tools/retry-watchdog.html">Open tool page &rarr;</a></article>
+      <article class="card" data-tool-card data-search="toolchain-installers toolchains and sessions build isolated native toolchains."><h3>toolchain-installers</h3><p><strong>Toolchains and sessions</strong><br>Build isolated native toolchains.</p><a href="tools/toolchain-installers.html">Open tool page &rarr;</a></article>
+      <article class="card" data-tool-card data-search="venv-install-all state and recovery restore every managed environment."><h3>venv-install-all</h3><p><strong>State and recovery</strong><br>Restore every managed environment.</p><a href="tools/venv-install-all.html">Open tool page &rarr;</a></article>
+      <article class="card" data-tool-card data-search="verify audit and evidence exercise native argument and artifact checks."><h3>verify</h3><p><strong>Audit and evidence</strong><br>Exercise native argument and artifact checks.</p><a href="tools/verify.html">Open tool page &rarr;</a></article>
+      <article class="card" data-tool-card data-search="verify-portability audit and evidence check offline portability and spaced paths."><h3>verify-portability</h3><p><strong>Audit and evidence</strong><br>Check offline portability and spaced paths.</p><a href="tools/verify-portability.html">Open tool page &rarr;</a></article>
+      <article class="card" data-tool-card data-search="verify-review-fixes audit and evidence regress prior review fixes."><h3>verify-review-fixes</h3><p><strong>Audit and evidence</strong><br>Regress prior review fixes.</p><a href="tools/verify-review-fixes.html">Open tool page &rarr;</a></article>
     </section>
     <h2>Operating contract</h2>
-    <p>Commands prefer private runtimes, produce logs or JSON evidence, default to offline behavior where possible, and use documented exit codes. Read the <a href="https://github.com/LiLinWilliam/rekit-tools/blob/main/docs/exit-code-contract.md">exit-code contract</a> before wiring a command into automation.</p>
-    <footer>Generated from the repository <code>docs/</code> directory · <a href="https://github.com/LiLinWilliam/rekit-tools">source on GitHub</a></footer>
+    <p>Commands prefer private runtimes, produce logs or JSON evidence, default to offline behavior where possible, and use documented exit codes. Read the <a href="exit-code-contract.md">exit-code contract</a> before wiring a command into automation.</p>
+    <h2>Contributors</h2>
+    <p>Read the <a href="https://github.com/LiLinWilliam/rekit-tools/blob/main/CONTRIBUTING.md">contribution guide</a> and use each tool page's <strong>Edit on GitHub</strong> link for focused documentation fixes.</p>
+    <button class="top" type="button" data-backtop hidden>Back to top</button>
+    <footer>Generated from the repository <code>docs/</code> directory &middot; <a href="https://github.com/LiLinWilliam/rekit-tools">source on GitHub</a></footer>
   </main>
+  <script src="assets/docs.js"></script>
 </body>
 </html>
