@@ -1,8 +1,11 @@
 # rekit-tools
 
+![rekit-tools banner](docs/assets/banner.svg)
+
 [English](README.md) | [中文](README.zh-CN.md)
 
-[![CI](https://github.com/LiLinWilliam/rekit-tools/actions/workflows/ci.yml/badge.svg)](https://github.com/LiLinWilliam/rekit-tools/actions/workflows/ci.yml) [![Coverage](https://img.shields.io/badge/coverage-39%25-brightgreen)](#testing)
+[![CI](https://github.com/LiLinWilliam/rekit-tools/actions/workflows/ci.yml/badge.svg)](https://github.com/LiLinWilliam/rekit-tools/actions/workflows/ci.yml) [![Coverage](https://img.shields.io/badge/coverage-39%25-brightgreen)](#testing) [![Python](https://img.shields.io/badge/python-3.10%2B-3776AB?logo=python&logoColor=white)](pyproject.toml) [![License](https://img.shields.io/badge/license-MIT-0b1220)](LICENSE)
+[![Latest release](https://img.shields.io/github/v/release/LiLinWilliam/rekit-tools?display_name=tag&sort=semver)](https://github.com/LiLinWilliam/rekit-tools/releases/latest) [![Ruff](https://img.shields.io/badge/lint-Ruff%200.17%2B-D7FF64?logo=ruff&logoColor=black)](pyproject.toml) [![pre-commit](https://img.shields.io/badge/pre--commit-enabled-F8BBD0?logo=pre-commit&logoColor=211F1C)](.pre-commit-config.yaml)
 
 `rekit-tools` is a set of auditable Windows tools for a local rekit runtime. It covers environment snapshots, offline restoration, health checks, portability verification, entropy rendering, native launchers, toolchain setup, and Codex session watching. Each tool lives in its own directory and prefers rekit's private runtimes and paths instead of changing the system Python or global PATH.
 
