@@ -150,7 +150,7 @@ Bug reports, documentation fixes, and narrowly scoped tools are welcome. Please 
 
 ## Testing
 
-The current test suite has 42 tests and reports 49.06% total statement coverage for `tools/` with `pytest-cov`. CI enforces a measured 47% floor; update the badge and floor together when coverage changes.
+The current test suite has 42 tests and reports 48.91% total statement coverage for `tools/` with `pytest-cov`. CI enforces a measured 47% floor; update the badge and floor together when coverage changes.
 
 ```powershell
 python -m pytest -q tests --cov=tools --cov-report=term-missing --cov-fail-under=47
