@@ -12,7 +12,7 @@
     <section class="intro">
       <h1>Documentation</h1>
       <p>Small, auditable commands for snapshotting, restoring, verifying and observing a private Windows runtime. Start with the safety boundaries, then choose a tool page.</p>
-      <nav>
+      <nav aria-label="Primary navigation">
         <a href="https://github.com/LiLinWilliam/rekit-tools/blob/main/README.md">Project overview</a>
         <a href="security-boundaries.md">Security boundaries</a>
         <a href="troubleshooting.md">Troubleshooting</a>
@@ -22,6 +22,7 @@
     <h2>Find a tool</h2>
     <label for="tool-search">Filter the 12 tool pages by name or purpose</label>
     <p><input id="tool-search" class="search" type="search" placeholder="Try: restore, audit, Codex..." data-tool-search></p>
+    <p class="search-status" data-search-status role="status" aria-live="polite">Showing all 12 tool pages. Type a name or purpose to filter.</p>
     <section class="cards" aria-live="polite">
       <article class="card" data-tool-card data-search="doctor audit and evidence health and native-boundary checks."><h3>doctor</h3><p><strong>Audit and evidence</strong><br>Health and native-boundary checks.</p><a href="tools/doctor.html">Open tool page &rarr;</a></article>
       <article class="card" data-tool-card data-search="environment-snapshot state and recovery capture locked packages and source revisions."><h3>environment-snapshot</h3><p><strong>State and recovery</strong><br>Capture locked packages and source revisions.</p><a href="tools/environment-snapshot.html">Open tool page &rarr;</a></article>
