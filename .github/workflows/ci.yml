@@ -1,0 +1,79 @@
+﻿name: CI
+
+on:
+  push:
+  pull_request:
+
+permissions:
+  contents: read
+
+jobs:
+  checks:
+    runs-on: windows-latest
+    steps:
+      - name: Check out source
+        uses: actions/checkout@v4
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+
+      - name: Compile Python files
+        shell: pwsh
+        run: python -m compileall -q tools
+
+      - name: Parse PowerShell files
+        shell: pwsh
+        run: |
+          $errors = @()
+          Get-ChildItem tools -Recurse -Filter *.ps1 | ForEach-Object {
+            $tokens = $null
+            $parseErrors = $null
+            [System.Management.Automation.Language.Parser]::ParseFile(
+              $_.FullName, [ref]$tokens, [ref]$parseErrors
+            ) | Out-Null
+            if ($parseErrors.Count) {
+              $errors += "$($_.FullName): $($parseErrors.Count) parse error(s)"
+            }
+          }
+          if ($errors.Count) {
+            $errors | ForEach-Object { Write-Error $_ }
+            exit 1
+          }
+
+      - name: Install renderer dependency
+        shell: pwsh
+        run: python -m pip install --disable-pip-version-check -r tools/render-entropy/requirements/render.txt
+
+      - name: Smoke test entropy renderer
+        shell: pwsh
+        run: |
+          @'
+          import json
+          import struct
+          import subprocess
+          import sys
+          import tempfile
+          from pathlib import Path
+
+          root = Path.cwd()
+          output = Path(tempfile.gettempdir()) / "rekit-entropy-ci.png"
+          payload = {"blocks": [
+              {"start": 0, "end": 512, "entropy": 4.0},
+              {"start": 512, "end": 1024, "entropy": 7.5},
+          ]}
+          result = subprocess.run(
+              [sys.executable, str(root / "tools/render-entropy/render_entropy.py"), str(output)],
+              input=json.dumps(payload), text=True, capture_output=True,
+          )
+          if result.returncode:
+              raise SystemExit(result.stderr or result.stdout)
+          data = output.read_bytes()
+          if data[:8] != b"\x89PNG\r\n\x1a\n":
+              raise SystemExit("renderer did not create a PNG")
+          if struct.unpack(">II", data[16:24]) != (2048, 1024):
+              raise SystemExit("unexpected PNG dimensions")
+          output.unlink(missing_ok=True)
+          print("entropy renderer smoke test passed")
+          '@ | python -
