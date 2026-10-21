@@ -1,4 +1,4 @@
-"""Render binwalk's computed entropy blocks using the already bundled Pillow."""
+﻿"""Render binwalk entropy blocks using Pillow."""
 import json
 from pathlib import Path
 import sys
@@ -12,38 +12,50 @@ except ImportError as exc:
     sys.exit(3)
 
 
-def main():
-    data = json.load(sys.stdin.buffer)
-    output = Path(sys.argv[1]).with_suffix(".png")
+def clamp_entropy(value) -> float:
+    """Convert an entropy value to the graph's supported 0..8 range."""
+    return max(0.0, min(8.0, float(value)))
+
+
+def block_points(blocks, size: int, left=130, right=1978, top=100, bottom=914):
+    """Return line points for entropy blocks without drawing or filesystem I/O."""
+    points = []
+    for block in blocks:
+        entropy = clamp_entropy(block["entropy"])
+        y = bottom - (bottom - top) * entropy / 8
+        points.extend(((left + (right - left) * block["start"] / size, y),
+                       (left + (right - left) * block["end"] / size, y)))
+    return points
+
+
+def render(data, output):
+    """Render a decoded entropy payload to a PNG path."""
+    output = Path(output).with_suffix(".png")
     width, height = 2048, 1024
     image = Image.new("RGB", (width, height), "white")
     draw = ImageDraw.Draw(image)
     font = ImageFont.load_default(size=23)
     heading = ImageFont.load_default(size=32)
-    left, top, right, bottom = 130, 100, width-70, height-110
+    left, top, right, bottom = 130, 100, width - 70, height - 110
     blocks = data["blocks"]
     size = blocks[-1]["end"] if blocks else 1
     size = max(1, size)
     draw.text((left, 28), "Entropy Graph", font=heading, fill="#172b4d")
     for value in range(9):
-        y = bottom-(bottom-top)*value/8
+        y = bottom - (bottom - top) * value / 8
         draw.line((left, y, right, y), fill="#e3e9ef", width=1)
-        draw.text((left-40, y-13), str(value), font=font, fill="#334155")
+        draw.text((left - 40, y - 13), str(value), font=font, fill="#334155")
     for tick in range(6):
-        offset = round(size*tick/5)
-        x = left+(right-left)*offset/size
+        offset = round(size * tick / 5)
+        x = left + (right - left) * offset / size
         draw.line((x, top, x, bottom), fill="#eef2f6", width=1)
-        draw.text((x, bottom+15), f"{offset:,}", font=font, fill="#334155", anchor="mt")
+        draw.text((x, bottom + 15), f"{offset:,}", font=font, fill="#334155", anchor="mt")
     draw.line((left, top, left, bottom, right, bottom), fill="#334155", width=2)
-    points = []
-    for block in blocks:
-        entropy = max(0.0, min(8.0, float(block["entropy"])))
-        y = bottom-(bottom-top)*entropy/8
-        points.extend(((left+(right-left)*block["start"]/size, y),
-                       (left+(right-left)*block["end"]/size, y)))
+    points = block_points(blocks, size, left, right, top, bottom)
     if len(points) >= 2:
         draw.line(points, fill="#2563eb", width=2)
-    draw.text(((left+right)/2, height-40), "File Offset (bytes)", font=font, fill="#334155", anchor="mm")
+    draw.text(((left + right) / 2, height - 40), "File Offset (bytes)",
+              font=font, fill="#334155", anchor="mm")
     draw.text((left, 70), "Shannon entropy (bits per byte)", font=font, fill="#334155")
     temporary = output.with_name(output.name + ".tmp")
     try:
@@ -52,6 +64,11 @@ def main():
     finally:
         temporary.unlink(missing_ok=True)
     return 0
+
+
+def main():
+    data = json.load(sys.stdin.buffer)
+    return render(data, sys.argv[1])
 
 
 if __name__ == "__main__":
