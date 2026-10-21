@@ -1,0 +1,6 @@
+﻿{
+  "blocks": [
+    {"start": 0, "end": 512, "entropy": 4.0},
+    {"start": 512, "end": 1024, "entropy": 7.5}
+  ]
+}
