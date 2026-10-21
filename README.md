@@ -1,8 +1,8 @@
-﻿# rekit-tools
+# rekit-tools
 
 [English](README.md) | [中文](README.zh-CN.md)
 
-[![CI](https://github.com/LiLinWilliam/rekit-tools/actions/workflows/ci.yml/badge.svg)](https://github.com/LiLinWilliam/rekit-tools/actions/workflows/ci.yml)
+[![CI](https://github.com/LiLinWilliam/rekit-tools/actions/workflows/ci.yml/badge.svg)](https://github.com/LiLinWilliam/rekit-tools/actions/workflows/ci.yml) [![Coverage](https://img.shields.io/badge/coverage-37%25-brightgreen)](#testing)
 
 `rekit-tools` is a set of auditable Windows tools for a local rekit runtime. It covers environment snapshots, offline restoration, health checks, portability verification, entropy rendering, native launchers, toolchain setup, and Codex session watching. Each tool lives in its own directory and prefers rekit's private runtimes and paths instead of changing the system Python or global PATH.
 
@@ -65,3 +65,11 @@ Do not commit `venv/`, `toolchain/`, `samples/`, `logs/`, caches, private sessio
 ## Contributing
 
 Use `tool/<name>` branches for tools and `docs/<name>` branches for documentation. Before opening a pull request, run `python -m pytest -q tests --cov=tools --cov-report=term-missing`, `git diff --check`, and a sensitive-data scan. See [`CONTRIBUTING.md`](CONTRIBUTING.md) for the full workflow.
+
+## Testing
+
+The current test suite has 20 tests and reports 37% total statement coverage for `tools/` with `pytest-cov`. CI enforces the measured 37% floor; update the badge and floor together when coverage changes.
+
+```powershell
+python -m pytest -q tests --cov=tools --cov-report=term-missing --cov-fail-under=37
+```
