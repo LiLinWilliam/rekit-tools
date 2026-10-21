@@ -6,6 +6,7 @@
 
 [![CI](https://github.com/LiLinWilliam/rekit-tools/actions/workflows/ci.yml/badge.svg)](https://github.com/LiLinWilliam/rekit-tools/actions/workflows/ci.yml) [![覆盖率](https://img.shields.io/badge/coverage-39%25-brightgreen)](#测试) [![Python](https://img.shields.io/badge/python-3.10%2B-3776AB?logo=python&logoColor=white)](pyproject.toml) [![许可证](https://img.shields.io/badge/license-MIT-0b1220)](LICENSE)
 [![最新发布](https://img.shields.io/github/v/release/LiLinWilliam/rekit-tools?display_name=tag&sort=semver)](https://github.com/LiLinWilliam/rekit-tools/releases/latest) [![Ruff](https://img.shields.io/badge/lint-Ruff%200.17%2B-D7FF64?logo=ruff&logoColor=black)](pyproject.toml) [![pre-commit](https://img.shields.io/badge/pre--commit-enabled-F8BBD0?logo=pre-commit&logoColor=211F1C)](.pre-commit-config.yaml)
+[![文档](https://img.shields.io/badge/docs-GitHub%20Pages-2ea44f?logo=github)](https://lilinwilliam.github.io/rekit-tools/)
 
 > 面向 Windows 本地运行时的可审计、离线优先工具集，让修复、迁移和验收都有证据可查。
 
