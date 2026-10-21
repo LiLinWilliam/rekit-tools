@@ -6,7 +6,7 @@ description: Auditable Windows tooling for portable local runtimes.
 
 # rekit-tools documentation
 
-Auditable Windows tooling for portable local runtimes. This page is the source index for the [documentation directory](https://github.com/LiLinWilliam/rekit-tools/tree/main/docs) and groups operator, tool, and contributor documentation.
+Auditable Windows tooling for portable local runtimes. This page is the source index for the [published Pages site](https://lilinwilliam.github.io/rekit-tools/) and groups operator, tool, and contributor documentation.
 
 The tools are intentionally small: each keeps its command-specific details beside its source code, emits inspectable evidence, and avoids changing unrelated system state.
 
