@@ -17,3 +17,18 @@ pwsh -File .\tools\toolchain-installers\21-frida-setup.ps1 -Online
 ## 输入与输出
 
 脚本从 rekit 根目录的 env.ps1、本地源码和缓存读取输入。首次准备依赖可能需要网络；默认脚本尽量离线，Frida 只有 -Online 才允许下载。成功时会打印各自的构建版本或 Frida environment ready.；失败时返回非零退出码。
+## Example output
+
+The installer scripts were syntax-parsed with PowerShell without starting a build or downloading a toolchain:
+
+```text
+$ pwsh -NoProfile -Command "ParseFile('tools/toolchain-installers/*.ps1')"
+10-build-binwalk.ps1: Parse status: OK
+11-build-jadx.ps1: Parse status: OK
+12-rizin-setup.ps1: Parse status: OK
+13-rizin-build.ps1: Parse status: OK
+21-frida-setup.ps1: Parse status: OK
+exit=0
+```
+
+A successful build prints its own version or readiness marker; missing sources, caches, or toolchain dependencies terminate with a non-zero PowerShell error.

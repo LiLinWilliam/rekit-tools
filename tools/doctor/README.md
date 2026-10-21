@@ -19,3 +19,12 @@ pwsh -File .\tools\doctor\90-doctor.ps1
 脚本通过 rekit 根目录的 bin/_environment 读取路径和虚拟环境列表，不读取仓库中的样本。成功时退出码为 0，任一检查失败时为 1。文本模式会打印 PASS: <通过数>/<总数> checks；JSON 模式的顶层 ok 和每个 checks[].ok 可用于自动化判断。
 
 请在真实 rekit 根目录中运行；本仓库的 tools 目录不是 rekit 根目录。
+## Example output
+
+The version-only path is safe to run before a full rekit root is available:
+
+```text
+$ python tools/doctor/doctor.py --version
+doctor 1.0.1
+exit=0
+```

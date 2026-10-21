@@ -16,3 +16,10 @@ python .\tools\environment-snapshot\02-snapshot-environments.py
 - 输出为 requirements/<环境名>.txt 与 requirements/manifest.json，并在终端打印 <环境名>: <数量> pinned entries。
 - 普通依赖必须带 ==，否则脚本抛出 ValueError: Unpinned requirement: ...。
 - manifest.json 记录生成时间、每个环境的锁定条目数量和 editable 源的 path、commit。
+## Example output
+
+```text
+$ python tools/environment-snapshot/02-snapshot-environments.py --version
+environment-snapshot 1.0.1
+exit=0
+```

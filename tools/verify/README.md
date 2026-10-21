@@ -14,3 +14,10 @@ REKIT_SAMPLE_APK 必须指向已获授权的 APK；不设置时脚本会使用�
 ## 输入与输出
 
 脚本会在 logs/ 写入每项检查的 stdout/stderr 和 verification.json，终端逐项打印 OK 或 FAIL，最后打印 PASS/FAIL。所有检查通过返回 0，任一检查失败返回 1。它会记录受保护目录前后指纹，验证期间不会主动修改这些目录。
+## Example output
+
+```text
+$ python tools/verify/verify.py --version
+verify 1.0.1
+exit=0
+```

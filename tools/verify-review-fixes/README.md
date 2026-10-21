@@ -13,3 +13,10 @@ python .\tools\verify-review-fixes\verify-review-fixes.py
 ## 输入与输出
 
 成功时打印 PASS 并返回 0；步骤失败时打印 FAIL，返回 1。详细 stdout/stderr 写入 logs/review-*.stdout.txt 与 logs/review-*.stderr.txt，汇总写入 logs/review-verification.json。临时目录在结束时删除。
+## Example output
+
+```text
+$ python tools/verify-review-fixes/verify-review-fixes.py --version
+verify-review-fixes 1.0.1
+exit=0
+```

@@ -17,3 +17,12 @@ python .\tools\restore\restore.py --venv render --online
 ## 输入与输出
 
 脚本需要 rekit 根目录的 Python runtime、uv、requirements 快照和可选的 toolchain/vcredist/*.dll。成功时打印 Restore verified. Log: ... 并返回 0；详细命令输出写入 logs/restore-*.log。参数或依赖失败时返回 1，并保留原环境（若已经移动到备份目录则恢复）。
+## Example output
+
+The version-only path avoids importing the rekit runtime and is safe in this repository checkout:
+
+```text
+$ python tools/restore/restore.py --version
+restore 1.0.1
+exit=0
+```
