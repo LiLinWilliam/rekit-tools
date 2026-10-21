@@ -63,20 +63,20 @@ The tools are intentionally small: each keeps its command-specific details besid
 These short pages are the static-site entry points. Each page keeps the first
 safe command visible and links back to the full source README and its edit view.
 
-| Tool | Published page source |
+| Tool | Published page |
 | --- | --- |
-| doctor | [doctor](tools/doctor.md) |
-| environment-snapshot | [environment-snapshot](tools/environment-snapshot.md) |
-| launcher | [launcher](tools/launcher.md) |
-| migrate-after-move | [migrate-after-move](tools/migrate-after-move.md) |
-| render-entropy | [render-entropy](tools/render-entropy.md) |
-| restore | [restore](tools/restore.md) |
-| retry-watchdog | [retry-watchdog](tools/retry-watchdog.md) |
-| toolchain-installers | [toolchain-installers](tools/toolchain-installers.md) |
-| venv-install-all | [venv-install-all](tools/venv-install-all.md) |
-| verify | [verify](tools/verify.md) |
-| verify-portability | [verify-portability](tools/verify-portability.md) |
-| verify-review-fixes | [verify-review-fixes](tools/verify-review-fixes.md) |
+| doctor | [doctor](https://lilinwilliam.github.io/rekit-tools/tools/doctor.html) |
+| environment-snapshot | [environment-snapshot](https://lilinwilliam.github.io/rekit-tools/tools/environment-snapshot.html) |
+| launcher | [launcher](https://lilinwilliam.github.io/rekit-tools/tools/launcher.html) |
+| migrate-after-move | [migrate-after-move](https://lilinwilliam.github.io/rekit-tools/tools/migrate-after-move.html) |
+| render-entropy | [render-entropy](https://lilinwilliam.github.io/rekit-tools/tools/render-entropy.html) |
+| restore | [restore](https://lilinwilliam.github.io/rekit-tools/tools/restore.html) |
+| retry-watchdog | [retry-watchdog](https://lilinwilliam.github.io/rekit-tools/tools/retry-watchdog.html) |
+| toolchain-installers | [toolchain-installers](https://lilinwilliam.github.io/rekit-tools/tools/toolchain-installers.html) |
+| venv-install-all | [venv-install-all](https://lilinwilliam.github.io/rekit-tools/tools/venv-install-all.html) |
+| verify | [verify](https://lilinwilliam.github.io/rekit-tools/tools/verify.html) |
+| verify-portability | [verify-portability](https://lilinwilliam.github.io/rekit-tools/tools/verify-portability.html) |
+| verify-review-fixes | [verify-review-fixes](https://lilinwilliam.github.io/rekit-tools/tools/verify-review-fixes.html) |
 
 ## CI and release
 

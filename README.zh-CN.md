@@ -56,20 +56,20 @@ python .\tools\render-entropy\render_entropy.py --version
 
 ## 工具速览
 
-| 工具 | 用途 | 真实入口示例 |
-| --- | --- | --- |
-| `doctor` | 检查原生工具、Python 环境和关键目录 | `python tools/doctor/doctor.py --json --no-write` |
-| `environment-snapshot` | 记录锁定的包版本和 editable 源提交 | `python tools/environment-snapshot/02-snapshot-environments.py` |
-| `launcher` | 构建 Windows 原生 launcher 并解压 `.xz` | `python tools/launcher/extract_xz.py <dir>` |
-| `migrate-after-move` | 移动 rekit 后恢复环境并运行 doctor | `pwsh -File tools/migrate-after-move/00-after-move.ps1 --check-only` |
-| `render-entropy` | 把熵块 JSON 渲染为 PNG | `Get-Content entropy.json \| python tools/render-entropy/render_entropy.py entropy.png` |
-| `restore` | 按锁定清单恢复虚拟环境 | `python tools/restore/restore.py --venv render --check-only` |
-| `retry-watchdog` | 只读观察 Codex SQLite 并按策略重试 | `python tools/retry-watchdog/watchdog.py --thread <thread-uuid> --once --dry-run` |
-| `toolchain-installers` | 构建或配置 binwalk、jadx、rizin、Frida | `Get-Content tools/toolchain-installers/README.md` |
-| `venv-install-all` | 通过 `repair.exe` 恢复全部虚拟环境 | `pwsh -File tools/venv-install-all/12-venv-install-all.ps1 --check-only` |
-| `verify` | 验收原生边界、参数传递和 JSON/PNG | `python tools/verify/verify.py` |
-| `verify-portability` | 验证离线恢复和含空格的路径 | `python tools/verify-portability/verify-portability.py` |
-| `verify-review-fixes` | 回归渲染器独立性、原生调用和 Ghidra 堆设置 | `python tools/verify-review-fixes/verify-review-fixes.py` |
+| 工具 | 用途 | 真实入口示例 | 文档 |
+| --- | --- | --- | --- |
+| `doctor` | 检查原生工具、Python 环境和关键目录 | `python tools/doctor/doctor.py --json --no-write` | [页面](https://lilinwilliam.github.io/rekit-tools/tools/doctor.html) |
+| `environment-snapshot` | 记录锁定的包版本和 editable 源提交 | `python tools/environment-snapshot/02-snapshot-environments.py` | [页面](https://lilinwilliam.github.io/rekit-tools/tools/environment-snapshot.html) |
+| `launcher` | 构建 Windows 原生 launcher 并解压 `.xz` | `python tools/launcher/extract_xz.py <dir>` | [页面](https://lilinwilliam.github.io/rekit-tools/tools/launcher.html) |
+| `migrate-after-move` | 移动 rekit 后恢复环境并运行 doctor | `pwsh -File tools/migrate-after-move/00-after-move.ps1 --check-only` | [页面](https://lilinwilliam.github.io/rekit-tools/tools/migrate-after-move.html) |
+| `render-entropy` | 把熵块 JSON 渲染为 PNG | `Get-Content entropy.json \| python tools/render-entropy/render_entropy.py entropy.png` | [页面](https://lilinwilliam.github.io/rekit-tools/tools/render-entropy.html) |
+| `restore` | 按锁定清单恢复虚拟环境 | `python tools/restore/restore.py --venv render --check-only` | [页面](https://lilinwilliam.github.io/rekit-tools/tools/restore.html) |
+| `retry-watchdog` | 只读观察 Codex SQLite 并按策略重试 | `python tools/retry-watchdog/watchdog.py --thread <thread-uuid> --once --dry-run` | [页面](https://lilinwilliam.github.io/rekit-tools/tools/retry-watchdog.html) |
+| `toolchain-installers` | 构建或配置 binwalk、jadx、rizin、Frida | `Get-Content tools/toolchain-installers/README.md` | [页面](https://lilinwilliam.github.io/rekit-tools/tools/toolchain-installers.html) |
+| `venv-install-all` | 通过 `repair.exe` 恢复全部虚拟环境 | `pwsh -File tools/venv-install-all/12-venv-install-all.ps1 --check-only` | [页面](https://lilinwilliam.github.io/rekit-tools/tools/venv-install-all.html) |
+| `verify` | 验收原生边界、参数传递和 JSON/PNG | `python tools/verify/verify.py` | [页面](https://lilinwilliam.github.io/rekit-tools/tools/verify.html) |
+| `verify-portability` | 验证离线恢复和含空格的路径 | `python tools/verify-portability/verify-portability.py` | [页面](https://lilinwilliam.github.io/rekit-tools/tools/verify-portability.html) |
+| `verify-review-fixes` | 回归渲染器独立性、原生调用和 Ghidra 堆设置 | `python tools/verify-review-fixes/verify-review-fixes.py` | [页面](https://lilinwilliam.github.io/rekit-tools/tools/verify-review-fixes.html) |
 
 每个工具的参数、输入、输出、退出码和副作用都写在对应的 [`tools/`](tools/) README 中。
 
