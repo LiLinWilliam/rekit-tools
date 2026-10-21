@@ -5,11 +5,12 @@ param(
     [string]$Prompt  = "",
     [string]$Model   = "",
     [string]$Effort  = "",
+    [string]$LogDir  = (Join-Path $PSScriptRoot "logs"),
     [switch]$ExecFallback
 )
 $ErrorActionPreference = "Stop"
 $here = Split-Path -Parent $MyInvocation.MyCommand.Path
-$log  = Join-Path $here "logs"
+$log  = $LogDir
 New-Item -ItemType Directory -Force -Path $log | Out-Null
 
 $pyCmd = Get-Command python -ErrorAction SilentlyContinue

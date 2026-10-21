@@ -46,12 +46,16 @@ Run the checks that match your change:
 ```powershell
 python -m ruff check tools tests src
 python -m pytest -q tests --cov=tools --cov-report=term-missing --cov-fail-under=39
+pwsh -NoProfile -ExecutionPolicy Bypass -File tests/powershell_smoke.ps1
 git diff --check
 ```
 
 For documentation changes, also check relative Markdown links locally. Do not add generated virtual environments, toolchains, samples, logs, caches, private session databases, credentials, API keys, tokens, or UUIDs. Use placeholders such as `<rekit-root>` in examples.
 
-If a change touches PowerShell, parse the scripts with the same command used by CI. If it touches a tool that needs an authorized runtime, document the exact prerequisite and preserve the command's exit code and evidence output.
+If a change touches PowerShell, run the smoke script above. It parses every script
+and exercises the watchdog lifecycle without starting a real process. If it touches
+a tool that needs an authorized runtime, document the exact prerequisite and
+preserve the command's exit code and evidence output.
 
 ## Pull requests
 

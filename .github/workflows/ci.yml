@@ -8,6 +8,17 @@ permissions:
   contents: read
 
 jobs:
+  powershell-smoke:
+    name: PowerShell smoke
+    runs-on: windows-latest
+    steps:
+      - name: Check out source
+        uses: actions/checkout@v7
+
+      - name: Run PowerShell smoke test
+        shell: pwsh
+        run: pwsh -NoProfile -ExecutionPolicy Bypass -File tests/powershell_smoke.ps1
+
   checks:
     name: checks (Python ${{ matrix.python-version }})
     runs-on: windows-latest
