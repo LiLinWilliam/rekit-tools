@@ -4,7 +4,7 @@
 
 [English](README.md) | 中文
 
-[![CI](https://github.com/LiLinWilliam/rekit-tools/actions/workflows/ci.yml/badge.svg)](https://github.com/LiLinWilliam/rekit-tools/actions/workflows/ci.yml) [![覆盖率](https://img.shields.io/badge/coverage-39%25-brightgreen)](#测试) [![Python](https://img.shields.io/badge/python-3.10%2B-3776AB?logo=python&logoColor=white)](pyproject.toml) [![许可证](https://img.shields.io/badge/license-MIT-0b1220)](LICENSE)
+[![CI](https://github.com/LiLinWilliam/rekit-tools/actions/workflows/ci.yml/badge.svg)](https://github.com/LiLinWilliam/rekit-tools/actions/workflows/ci.yml) [![覆盖率](https://img.shields.io/badge/coverage-49%25-brightgreen)](#测试) [![Python](https://img.shields.io/badge/python-3.10%2B-3776AB?logo=python&logoColor=white)](pyproject.toml) [![许可证](https://img.shields.io/badge/license-MIT-0b1220)](LICENSE)
 [![最新发布](https://img.shields.io/github/v/release/LiLinWilliam/rekit-tools?display_name=tag&sort=semver)](https://github.com/LiLinWilliam/rekit-tools/releases/latest) [![Ruff](https://img.shields.io/badge/lint-Ruff%200.17%2B-D7FF64?logo=ruff&logoColor=black)](pyproject.toml) [![pre-commit](https://img.shields.io/badge/pre--commit-enabled-F8BBD0?logo=pre-commit&logoColor=211F1C)](.pre-commit-config.yaml)
 [![文档](https://img.shields.io/badge/docs-GitHub%20Pages-2ea44f?logo=github)](https://lilinwilliam.github.io/rekit-tools/)
 
@@ -144,8 +144,8 @@ examples/            不含真实凭据的最小命令示例
 
 ## 测试
 
-当前测试套件包含 33 项测试，使用 `pytest-cov` 测得 `tools/` 总语句覆盖率为 39%。CI 将实测的 39% 作为门槛；覆盖率变化时请同步更新徽章和门槛。
+当前测试套件包含 42 项测试，使用 `pytest-cov` 测得 `tools/` 总语句覆盖率为 49.06%。CI 将实测的 47% 作为门槛；覆盖率变化时请同步更新徽章和门槛。
 
 ```powershell
-python -m pytest -q tests --cov=tools --cov-report=term-missing --cov-fail-under=39
+python -m pytest -q tests --cov=tools --cov-report=term-missing --cov-fail-under=47
 ```

@@ -12,7 +12,7 @@ Install the package in editable mode and run the test suite:
 
 ```powershell
 python -m pip install --disable-pip-version-check --no-deps -e .
-python -m pytest -q tests --cov=tools --cov-report=term-missing --cov-fail-under=39
+python -m pytest -q tests --cov=tools --cov-report=term-missing --cov-fail-under=47
 ```
 
 The editable install provides the `rekit-tools` command. `rekit-tools --version` and `rekit-tools list` are safe local smoke tests.
@@ -45,7 +45,7 @@ Run the checks that match your change:
 
 ```powershell
 python -m ruff check tools tests src
-python -m pytest -q tests --cov=tools --cov-report=term-missing --cov-fail-under=39
+python -m pytest -q tests --cov=tools --cov-report=term-missing --cov-fail-under=47
 pwsh -NoProfile -ExecutionPolicy Bypass -File tests/powershell_smoke.ps1
 git diff --check
 ```
