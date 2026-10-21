@@ -58,7 +58,7 @@ examples/            不含真实凭据的最小命令索引
 .github/workflows/   CI 与发布自动化
 ```
 
-不要把 `venv/`、`toolchain/`、`samples/`、`logs/`、缓存、私有会话数据库或 Frida server 提交到仓库。涉及真实样本、设备或 Codex 会话时，只在获得授权的本地环境中运行，并先阅读 [`SECURITY.md`](SECURITY.md)。
+不要把 `venv/`、`toolchain/`、`samples/`、`logs/`、缓存、私有会话数据库或 Frida server 提交到仓库。涉及真实样本、设备或 Codex 会话时，只在获得授权的本地环境中运行，并先阅读 [`SECURITY.md`](SECURITY.md) 与[安全边界说明](docs/security-boundaries.md)。
 
 ## 贡献
 
