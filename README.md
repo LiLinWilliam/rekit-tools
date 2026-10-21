@@ -4,7 +4,7 @@
 
 [English](README.md) | [中文](README.zh-CN.md)
 
-[![CI](https://github.com/LiLinWilliam/rekit-tools/actions/workflows/ci.yml/badge.svg)](https://github.com/LiLinWilliam/rekit-tools/actions/workflows/ci.yml) [![Coverage](https://img.shields.io/badge/coverage-39%25-brightgreen)](#testing) [![Python](https://img.shields.io/badge/python-3.10%2B-3776AB?logo=python&logoColor=white)](pyproject.toml) [![License](https://img.shields.io/badge/license-MIT-0b1220)](LICENSE)
+[![CI](https://github.com/LiLinWilliam/rekit-tools/actions/workflows/ci.yml/badge.svg)](https://github.com/LiLinWilliam/rekit-tools/actions/workflows/ci.yml) [![Coverage](https://img.shields.io/badge/coverage-49%25-brightgreen)](#testing) [![Python](https://img.shields.io/badge/python-3.10%2B-3776AB?logo=python&logoColor=white)](pyproject.toml) [![License](https://img.shields.io/badge/license-MIT-0b1220)](LICENSE)
 [![Latest release](https://img.shields.io/github/v/release/LiLinWilliam/rekit-tools?display_name=tag&sort=semver)](https://github.com/LiLinWilliam/rekit-tools/releases/latest) [![Ruff](https://img.shields.io/badge/lint-Ruff%200.17%2B-D7FF64?logo=ruff&logoColor=black)](pyproject.toml) [![pre-commit](https://img.shields.io/badge/pre--commit-enabled-F8BBD0?logo=pre-commit&logoColor=211F1C)](.pre-commit-config.yaml)
 [![Docs](https://img.shields.io/badge/docs-GitHub%20Pages-2ea44f?logo=github)](https://lilinwilliam.github.io/rekit-tools/)
 
@@ -150,10 +150,10 @@ Bug reports, documentation fixes, and narrowly scoped tools are welcome. Please 
 
 ## Testing
 
-The current test suite has 33 tests and reports 39% total statement coverage for `tools/` with `pytest-cov`. CI enforces the measured 39% floor; update the badge and floor together when coverage changes.
+The current test suite has 42 tests and reports 49.06% total statement coverage for `tools/` with `pytest-cov`. CI enforces a measured 47% floor; update the badge and floor together when coverage changes.
 
 ```powershell
-python -m pytest -q tests --cov=tools --cov-report=term-missing --cov-fail-under=39
+python -m pytest -q tests --cov=tools --cov-report=term-missing --cov-fail-under=47
 pwsh -NoProfile -ExecutionPolicy Bypass -File tests/powershell_smoke.ps1
 ```
 

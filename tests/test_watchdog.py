@@ -1,7 +1,9 @@
 import re
 import sqlite3
+import subprocess
 import sys
 
+import pytest
 from conftest import load_tool
 
 watchdog = load_tool("tools/retry-watchdog/watchdog.py", "watchdog")
@@ -132,3 +134,132 @@ def test_runner_run_cmd_captures_success_and_failure(tmp_path):
     assert success["stdout"] == "ok"
     assert failure["ok"] is False
     assert failure["rc"] == 7
+
+
+def test_find_codex_exe_reports_missing_installation(monkeypatch):
+    monkeypatch.delenv("CODEX_EXE", raising=False)
+    monkeypatch.delenv("LOCALAPPDATA", raising=False)
+    monkeypatch.delenv("PROGRAMFILES", raising=False)
+    monkeypatch.setattr(watchdog.shutil, "which", lambda _: None)
+    with pytest.raises(SystemExit, match="codex"):
+        watchdog.find_codex_exe()
+
+
+def test_open_ro_returns_none_for_corrupt_database(tmp_path, monkeypatch):
+    db = tmp_path / "broken.sqlite"
+    db.write_bytes(b"not sqlite")
+    monkeypatch.setenv("TEMP", str(tmp_path / "temp"))
+    calls = 0
+
+    def fail_connect(*args, **kwargs):
+        nonlocal calls
+        calls += 1
+        raise sqlite3.DatabaseError("busy")
+
+    monkeypatch.setattr(watchdog.sqlite3, "connect", fail_connect)
+    assert watchdog.open_ro(db) is None
+    assert calls == 2
+
+
+def test_poll_logs_reads_new_rows_and_uses_watermark(tmp_path):
+    db = tmp_path / "logs.sqlite"
+    con = sqlite3.connect(db)
+    con.execute("create table logs (id integer, ts real, level text, target text, "
+                "thread_id text, feedback_log_body text)")
+    con.executemany("insert into logs values (?, ?, ?, ?, ?, ?)", [
+        (1, 1.0, "info", None, "thread-a", "first"),
+        (2, 2.0, "warn", "target", None, "contains thread-a"),
+    ])
+    con.commit()
+    con.close()
+
+    state = watchdog.CodexState(tmp_path)
+    state.logs_db = db
+    assert state.poll_logs() == 2
+    assert len(state.recent_rows) == 2
+    assert state.poll_logs() == 0
+
+
+def test_codex_state_missing_rows_return_empty_values(tmp_path):
+    state = watchdog.CodexState(tmp_path)
+    assert state.thread_meta("missing")["cwd"] is None
+    assert state.turn_status("missing") is None
+    assert state.queued_ids("missing") == []
+
+
+def test_judge_reports_completed_failed_and_idle_stalled(tmp_path, monkeypatch):
+    monkeypatch.setattr(watchdog, "now_ts", lambda: 100.0)
+    state = watchdog.CodexState(tmp_path)
+    state.recent_rows = [{
+        "id": 1, "ts": 95.0, "level": "error", "target": "",
+        "thread_id": "thread-a",
+        "body": 'turn.id="12345678-1234-1234-1234-123456789abc" '
+                "model=gpt-5 reasoning_effort=high turn error: failed",
+    }]
+    monkeypatch.setattr(state, "turn_status", lambda _: {
+        "status": "completed", "started_at": 90.0,
+    })
+    assert state.judge("thread-a", 30, 120)["verdict"] == "completed"
+    monkeypatch.setattr(state, "turn_status", lambda _: {
+        "status": "failed", "started_at": 90.0,
+    })
+    assert state.judge("thread-a", 30, 120)["verdict"] == "stalled"
+    monkeypatch.setattr(state, "turn_status", lambda _: None)
+    assert state.judge("thread-a", 2, 120)["verdict"] == "stalled"
+
+
+def test_newest_turn_id_returns_latest_matching_row(tmp_path):
+    state = watchdog.CodexState(tmp_path)
+    state.recent_rows = [
+        {"id": 1, "thread_id": "thread-a", "body": "no turn"},
+        {"id": 2, "thread_id": "thread-a",
+         "body": 'turn.id="abcdefab-cdef-abcd-efab-cdefabcdefab"'},
+    ]
+    state.poll_logs = lambda: 0
+    assert state.newest_turn_id("thread-a") == "abcdefab-cdef-abcd-efab-cdefabcdefab"
+
+
+def test_runner_run_cmd_handles_timeout_and_spawn_error(tmp_path, monkeypatch):
+    runner = watchdog.Runner("codex", tmp_path)
+
+    def timeout(*args, **kwargs):
+        raise subprocess.TimeoutExpired(cmd=args[0], timeout=kwargs["timeout"])
+
+    monkeypatch.setattr(watchdog.subprocess, "run", timeout)
+    assert runner._run_cmd(["codex"], timeout=1)["stderr"] == "timeout"
+
+    def spawn_error(*args, **kwargs):
+        raise OSError("missing")
+
+    monkeypatch.setattr(watchdog.subprocess, "run", spawn_error)
+    result = runner._run_cmd(["codex"], timeout=1)
+    assert result["ok"] is False
+    assert result["rc"] is None
+    assert "spawn failed" in result["stderr"]
+
+
+def test_runner_queue_message_builds_authorized_command(tmp_path, monkeypatch):
+    runner = watchdog.Runner("codex.exe", tmp_path)
+    seen = {}
+
+    def fake_run(cmd, timeout):
+        seen["cmd"] = cmd
+        seen["timeout"] = timeout
+        return {"ok": True}
+
+    monkeypatch.setattr(runner, "_run_cmd", fake_run)
+    assert runner.queue_message("thread-a", "continue", timeout=7) == {"ok": True}
+    assert seen == {
+        "cmd": ["codex.exe", "queue", "--thread", "thread-a", "--message", "continue"],
+        "timeout": 7,
+    }
+
+
+def test_pid_alive_handles_invalid_and_tasklist_results(monkeypatch):
+    assert watchdog.pid_alive(0) is False
+    monkeypatch.setattr(watchdog.subprocess, "run", lambda *a, **k:
+                        type("Result", (), {"stdout": "1234 process.exe"})())
+    assert watchdog.pid_alive(1234) is True
+    monkeypatch.setattr(watchdog.subprocess, "run", lambda *a, **k:
+                        type("Result", (), {"stdout": "INFO: no tasks"})())
+    assert watchdog.pid_alive(1234) is False

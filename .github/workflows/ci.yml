@@ -116,7 +116,7 @@ jobs:
         shell: pwsh
         run: |
           New-Item -ItemType Directory -Force test-results | Out-Null
-          & python -m pytest -q tests --cov=tools --cov-report=term-missing --cov-fail-under=39 2>&1 |
+          & python -m pytest -q tests --cov=tools --cov-report=term-missing --cov-fail-under=47 2>&1 |
             Tee-Object -FilePath "test-results/pytest-${{ matrix.python-version }}.log"
           if ($LASTEXITCODE -ne 0) { exit $LASTEXITCODE }
 
