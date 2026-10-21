@@ -1,7 +1,7 @@
 #!/usr/bin/env python3
 # -*- coding: utf-8 -*-
 """probe_models.py - 并行探测各模型当前容量是否可用（小请求，独立会话，不碰原会话锁）。"""
-import json, os, shutil, subprocess, sys, time
+import os, shutil, subprocess, sys, time
 from concurrent.futures import ThreadPoolExecutor
 from datetime import datetime
 from pathlib import Path

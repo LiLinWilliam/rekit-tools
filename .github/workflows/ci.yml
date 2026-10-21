@@ -1,4 +1,4 @@
-﻿name: CI
+name: CI
 
 on:
   push:
@@ -30,6 +30,13 @@ jobs:
           python -m pip install --disable-pip-version-check --no-deps -e .
           rekit-tools --version
 
+      - name: Install Ruff
+        shell: pwsh
+        run: python -m pip install --disable-pip-version-check ruff
+
+      - name: Run Ruff
+        shell: pwsh
+        run: python -m ruff check tools tests src
       - name: Compile Python files
         shell: pwsh
         run: python -m compileall -q tools

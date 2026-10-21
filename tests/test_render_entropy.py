@@ -1,5 +1,3 @@
-﻿from pathlib import Path
-
 from conftest import load_tool
 
 
